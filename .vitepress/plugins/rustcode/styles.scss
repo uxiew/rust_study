@@ -1,0 +1,60 @@
+:root {
+    --vp-icon-runner:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' stroke='rgba(128,128,128,1)' viewBox='0 0 16 16'%3E%3Cpath d='M2.78 2L2 2.41v12l.78.42l9-6V8l-9-6zM3 13.48V3.35l7.6 5.07L3 13.48z'/%3E%3Cpath fill-rule='evenodd' d='m6 14.683l8.78-5.853V8L6 2.147V3.35l7.6 5.07L6 13.48v1.203z' clip-rule='evenodd'/%3E%3C/svg%3E")
+}
+
+$btnName:".run";
+
+.vp-doc {
+    div[class*='language-'] {
+        &:hover {
+            button#{$btnName},
+            button#{$btnName}:focus {
+                opacity: 1;
+            }
+        }
+
+        & > button#{$btnName}{
+            direction: ltr;
+            position: absolute;
+            top: 12px;
+            right: 62px;
+            z-index: 3;
+            border: 1px solid var(--vp-code-copy-code-border-color);
+            border-radius: 4px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--vp-code-copy-code-bg);
+            opacity: 0;
+            cursor: pointer;
+            background-image: var(--vp-icon-runner);
+            background-position: 50%;
+            background-size: 20px;
+            background-repeat: no-repeat;
+            transition: border-color 0.25s, background-color 0.25s, opacity 0.25s;
+
+            :hover,
+            .runned {
+                border-color: var(--vp-code-copy-code-hover-border-color);
+                background-color: var(--vp-code-copy-code-hover-bg);
+            }
+        }
+    }
+
+    code.result {
+        position: relative;
+        padding: 10px;
+        color: #24b736;
+        z-index: 111;
+        white-space: pre-wrap;
+        border-top: 1px solid #4e4e4e;
+        background-color: transparent;
+
+        &.result-warn {
+            color: #dbdb12;
+            &::before {
+                content: "timeout: ";
+            }
+        }
+    }
+
+}

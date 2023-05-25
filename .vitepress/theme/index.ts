@@ -2,6 +2,7 @@
 import { h } from 'vue'
 import Theme from 'vitepress/theme'
 import './style.css'
+import { useRustCode } from "../plugins/rustcode"
 
 export default {
   ...Theme,
@@ -11,6 +12,9 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    // ...
+    // app.component('xxx')
+  },
+  setup() {
+    useRustCode()
   }
 }

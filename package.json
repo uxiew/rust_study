@@ -6,6 +6,12 @@
     "docs:preview": "vitepress preview"
   },
   "devDependencies": {
+    "@codemirror/lang-rust": "^6.0.1",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@types/markdown-it": "^12.2.3",
+    "@vtrbo/codemirror": "0.0.1-beta.0",
+    "@vueuse/core": "^10.1.2",
+    "sass": "^1.62.1",
     "tslib": "^2.5.2",
     "vitepress": "1.0.0-beta.1",
     "vitepress-plugin-autobar": "^1.0.8",
