@@ -21,8 +21,6 @@ function prepareRunner(onClick: (this: HTMLButtonElement, ev: MouseEvent) => any
 
 export function useRustCode() {
   if (inBrowser) {
-    const timeoutIdMap: Map<HTMLElement, number> = new Map()
-
     const router = useRouter()
     onMounted(() => {
       router.onAfterRouteChanged = (href) => {
@@ -52,13 +50,7 @@ export function useRustCode() {
       }
 
       execCode(text, parent).then(() => {
-        clearTimeout(timeoutIdMap.get(el))
-        const timeoutId = setTimeout(() => {
-          el.classList.remove('copied')
-          el.blur()
-          timeoutIdMap.delete(el)
-        }, 2000)
-        timeoutIdMap.set(el, timeoutId)
+        // to do ...
       })
     }
 
@@ -96,7 +88,7 @@ async function execCode(code: string, codeBlock: HTMLElement) {
   }
 
   resultBlock.classList.remove("result-warn")
-  resultBlock.innerText = "Running...";
+  resultBlock.innerHTML = `<span style="color:#FFCB6B">Running...<span>`;
   return fetch_with_timeout("https://play.rust-lang.org/evaluate.json", {
     headers: {
       'Content-Type': "application/json",

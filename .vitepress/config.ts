@@ -4,6 +4,7 @@ import sidebar from './sidebar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  lang: 'zh-CN',
   title: "🦀 Dive into Rust",
   description: "documents my learning journey of Rust.",
   srcDir: "docs",
