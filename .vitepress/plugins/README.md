@@ -1,6 +1,6 @@
 
 
-# usage
+# TODO
 ```rust,edition2018
 use ndarray::arr2;
 fn main() {

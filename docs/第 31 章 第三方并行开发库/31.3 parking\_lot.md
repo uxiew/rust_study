@@ -1,0 +1,36 @@
+### 31.3 parking\_lot
+
+Rust 标准库帮我们封装了一些基本的操作系统的同步原语，比如 Mutex Condvar 等。一般情况下这些够我们使用了。但是还有一些对性能有极致要求的开发者对标准库的实现并不满意，于是社区里又有人开发出来了一套替代品，在性能和易用性方面，都比标准库更好，这就是 parking\_lot 库。下面的示例展示了这个库提供的 Mutex，它的用法与标准库的 Mutex 差别不大：
+
+---
+
+```rust
+use std::sync::Arc;
+use parking_lot::Mutex;
+use std::thread;
+use std::sync::mpsc::channel;
+
+fn main() {
+    const N: usize = 10;
+
+    let data = Arc::new(Mutex::new(0));
+
+    let (tx, rx) = channel();
+    for _ in 0..10 {
+        let (data, tx) = (data.clone(), tx.clone());
+        thread::spawn(move || {
+            let mut data = data.lock();
+            *data += 1;
+            if *data == N {
+                tx.send(()).unwrap();
+            }
+        });
+    }
+
+    println!("{}", rx.recv().unwrap());
+}
+```
+
+---
+
+这个库也给我们展现了 Rust 在并发方面的高度可扩展性，想要实现什么功能，基本不会因为编译器的限制而无法做到。
