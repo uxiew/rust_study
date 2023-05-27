@@ -27,8 +27,7 @@ export function useRustCode() {
   if (inBrowser) {
     const router = useRouter()
     onMounted(() => {
-      router.onAfterRouteChanged = (href) => {
-        console.log(href)
+      router.onAfterRouteChanged = () => {
         prepareRunner(onClick)
       }
       prepareRunner(onClick)

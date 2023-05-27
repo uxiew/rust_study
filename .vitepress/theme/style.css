@@ -88,3 +88,10 @@
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand) !important;
 }
+
+/**
+* 自定义
+*------------------------------------------- */
+table th:empty{
+    display:none
+}

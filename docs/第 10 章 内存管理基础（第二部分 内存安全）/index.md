@@ -5,8 +5,9 @@
 Rust 希望通过语言的机制和编译器的功能，把程序员易犯错、不易检查的问题解决在编译期，避免运行时的内存错误。这一部分主要探讨 Rust 是如何达到内存安全特性的。
 
 Languages shape the way we think，or don’t.
-
-——Erik Naggum
+<div style="text-align: right;">
+—— Erik Naggum
+</div>
 
 ## 第 10 章 内存管理基础
 
