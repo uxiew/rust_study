@@ -69,13 +69,21 @@ const getChildren = function(parentPath: string, options: Options) {
       return undefined;
     }
     if (indexLink === basename(newPath)) return undefined;
-    return { path: newPath };
+    return { path: '/' + newPath };
   });
 
   remove(files, file => file === undefined);
   // Return the ordered list of files, sort by 'path'
   return sortBy(files, sortFn ? (f) => sortFn(f!.path) : ['path']).map(file => file?.path || '');
 };
+
+/**
+  必须要`/`开头的绝对路径，否则上一页、下一页会出问题；
+  https://vitepress.dev/reference/default-theme-sidebar#the-basics
+*/
+function normalize(path: string) {
+  return '/' + path + '.md'
+}
 
 // Return sidebar config for given baseDir.
 function side(baseDir: string, opts?: Options) {
@@ -85,6 +93,7 @@ function side(baseDir: string, opts?: Options) {
   const sidebars: Sidebar = [];
   // strip number of folder's name
   mdFiles.forEach((item) => {
+    item = item.slice(1);
     const dirName = getDirName(item);
     const isDirectChildFile = item.search(sep) < 0;
     if (options?.ignoreDirectory?.length
@@ -96,15 +105,15 @@ function side(baseDir: string, opts?: Options) {
     if (sidebarItemIndex !== -1) {
       sidebars[sidebarItemIndex].items?.push({
         text: mdFileName,
-        link: item,
+        link: normalize(item)
       });
     } else {
       sidebars.push({
         text: dirName,
-        link: isDirectChildFile ? mdFileName : options.indexLink && join(dirName, options.indexLink),
+        link: normalize((isDirectChildFile ? mdFileName : options.indexLink && join(dirName, options.indexLink))),
         items: isDirectChildFile ? undefined : [{
           text: mdFileName,
-          link: item,
+          link: normalize(item)
         }],
       });
     }
