@@ -13,7 +13,7 @@ $btnName:".run";
             }
         }
 
-        & > button#{$btnName}{
+        & > button#{$btnName} {
             direction: ltr;
             position: absolute;
             top: 12px;
@@ -32,10 +32,14 @@ $btnName:".run";
             background-repeat: no-repeat;
             transition: border-color 0.25s, background-color 0.25s, opacity 0.25s;
 
-            :hover,
-            .runned {
+            &:hover,
+            &.runned {
                 border-color: var(--vp-code-copy-code-hover-border-color);
                 background-color: var(--vp-code-copy-code-hover-bg);
+            }
+            &:disabled,
+            &[disabled] {
+                cursor: not-allowed;
             }
         }
     }

@@ -19,6 +19,10 @@ function prepareRunner(onClick: (this: HTMLButtonElement, ev: MouseEvent) => any
   })
 }
 
+
+/**
+* @description add run code button like copy button style
+*/
 export function useRustCode() {
   if (inBrowser) {
     const router = useRouter()
@@ -49,7 +53,7 @@ export function useRustCode() {
         text = text.replace(/^ *(\$|>) /gm, '').trim()
       }
 
-      execCode(text, parent).then(() => {
+      execCode(text, el).then(() => {
         // to do ...
       })
     }
@@ -57,7 +61,7 @@ export function useRustCode() {
   }
 }
 
-
+/** 获取 rust 版本 */
 function getEdition(code_block: HTMLElement) {
   let classes = code_block.querySelector('code')?.classList!;
   let edition = "2015";
@@ -70,7 +74,8 @@ function getEdition(code_block: HTMLElement) {
 }
 
 // https://github.com/rust-lang/mdBook/blob/master/src/theme/book.js#L102
-async function execCode(code: string, codeBlock: HTMLElement) {
+async function execCode(code: string, runBtnEl: HTMLElement) {
+  const codeBlock = runBtnEl.parentElement!
   let resultBlock = codeBlock.querySelector(".result") as HTMLElement;
   if (!resultBlock) {
     resultBlock = document.createElement('code');
@@ -89,6 +94,8 @@ async function execCode(code: string, codeBlock: HTMLElement) {
 
   resultBlock.classList.remove("result-warn")
   resultBlock.innerHTML = `<span style="color:#FFCB6B">Running...<span>`;
+  runBtnEl.setAttribute("disabled", "true")
+
   return fetch_with_timeout("https://play.rust-lang.org/evaluate.json", {
     headers: {
       'Content-Type': "application/json",
@@ -110,5 +117,8 @@ async function execCode(code: string, codeBlock: HTMLElement) {
     .catch(error => {
       resultBlock.classList.add("result-warn")
       resultBlock.innerText = "Playground Communication: " + error.message
-    });
+    })
+    .finally(() => {
+      runBtnEl.removeAttribute("disabled")
+    })
 }
