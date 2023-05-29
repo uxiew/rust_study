@@ -21,15 +21,13 @@ function prepareRunner(onClick: (this: HTMLButtonElement, ev: MouseEvent) => any
 
 
 /**
-* @description add run code button like copy button style
+* @description add run code button follow copy button style
 */
 export function useRustCode() {
   if (inBrowser) {
     const router = useRouter()
     onMounted(() => {
-      router.onAfterRouteChanged = () => {
-        prepareRunner(onClick)
-      }
+      router.onAfterRouteChanged = () => prepareRunner(onClick)
       prepareRunner(onClick)
     })
 
@@ -52,9 +50,7 @@ export function useRustCode() {
         text = text.replace(/^ *(\$|>) /gm, '').trim()
       }
 
-      execCode(text, el).then(() => {
-        // to do ...
-      })
+      execCode(text, el)
     }
 
   }
@@ -106,10 +102,10 @@ async function execCode(code: string, runBtnEl: HTMLElement) {
     .then(response => (response as Response).json())
     .then(response => {
       if (response.result.trim() === '') {
-        resultBlock.innerText = "No output";
+        resultBlock.innerText = "❕No output";
         resultBlock.classList.add("result-no-output");
       } else {
-        resultBlock.innerText = response.result;
+        resultBlock.innerHTML = response.result.replace(/--explain (E\d+)/, `--explain <a target="_blank" href="https://doc.rust-lang.org/error_codes/$1.html">$1</a>`);
         resultBlock.classList.remove("result-no-output");
       }
     })

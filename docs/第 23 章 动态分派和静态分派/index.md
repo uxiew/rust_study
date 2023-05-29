@@ -1,4 +1,4 @@
-## 第 23 章 动态分派和静态分派
+# 第 23 章 动态分派和静态分派
 
 Rust 可以同时支持“静态分派”（static dispatch）和“动态分派”（dynamic dispatch）。
 

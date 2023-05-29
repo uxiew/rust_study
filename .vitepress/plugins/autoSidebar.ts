@@ -1,5 +1,4 @@
 // https://github.com/luciozhang/vitepress-plugin-autobar/blob/master/src/index.ts
-import startCase from 'lodash/startCase';
 import merge from 'lodash/merge';
 import sortBy from 'lodash/sortBy';
 import remove from 'lodash/remove';
@@ -21,19 +20,21 @@ interface SidebarGroup extends SidebarItem {
 
 interface Options {
   /** Item could be Linked to File */
-  indexLink: string,
+  indexLink?: string,
   /** Directoty path to ignore from being captured. */
-  ignoreDirectory?: Array<string>,
+  ignoreDirs?: Array<string>,
   /** File path to ignore from being captured. */
   ignoreMDFiles?: Array<string>, //
   /** Function to customize files sorting rules, use lodash's sortBy. */
   sortBy?: (filepath: string) => number
+  /** The subdirectories are treated as hierarchies. when value is false, All markdown files in the directory are read*/
+  hierarchy?: boolean
 }
 
 const defaultOptions = {
-  indexLink: '',
-  ignoreMDFiles: ['index'],
-  ignoreDirectory: ['node_modules'],
+  hierarchy: true,
+  indexLink: 'index',
+  ignoreDirs: ['node_modules'],
 }
 
 // handle md file name
@@ -43,75 +44,82 @@ const getName = (path: string) => {
   if (argsIndex > -1) {
     name = name.substring(0, argsIndex);
   }
-
-  // "001.guide" or "001-guide" or "001_guide" or "001 guide" -> "guide"
-  name = name.replace(/^\d+[.\-_ ]?/, '');
-  return startCase(name);
+  // name = name.replace(/^\d+[.\-_ ]?/, '');
+  return name
 };
 
 // handle dir name
 const getDirName = (path: string) => {
   let name = path.split(sep).shift() || path;
   name = name.replace(/^\d+[.\-_ ]?/, '');
-
-  return startCase(name);
+  return name
 };
 
 // Load all MD files in a specified directory
 const getChildren = function(parentPath: string, options: Options) {
-  const { indexLink, sortBy: sortFn, ignoreMDFiles } = options
+  const { indexLink, sortBy: sortFn, ignoreMDFiles, hierarchy } = options
   const pattern = '/**/*.md';
   const files = globbySync(join(parentPath, pattern)).map((path) => {
     // fix parentPath relative dir
     const newPath = path.slice((new RegExp(`.*?${sep}`)).exec(path)![0].length, -3);
     // ignore some files
-    if (ignoreMDFiles?.length && ignoreMDFiles.indexOf(newPath) !== -1) {
-      return undefined;
+    if (ignoreMDFiles?.length && ignoreMDFiles.some((ifile) => newPath.endsWith(ifile))) {
+      return 0;
     }
-    if (indexLink === basename(newPath)) return undefined;
-    return { path: '/' + newPath };
+    if (hierarchy && indexLink === basename(newPath)) return 0;
+    return { path: newPath };
   });
 
-  remove(files, file => file === undefined);
-  // Return the ordered list of files, sort by 'path'
+  remove(files, file => file === 0);
+  // Return the ordered list of files, sort by Options.sortBy or 'path'
   return sortBy(files, sortFn ? (f) => sortFn(f!.path) : ['path']).map(file => file?.path || '');
 };
 
 /**
   必须要`/`开头的绝对路径，否则上一页、下一页会出问题；
-  https://vitepress.dev/reference/default-theme-sidebar#the-basics
+  https://vitepre
+  ss.dev/reference/default-theme-sidebar#the-basics
 */
 function normalize(path: string) {
-  return '/' + path + '.md'
+  return sep + path + '.md'
 }
 
 // Return sidebar config for given baseDir.
 function side(baseDir: string, opts?: Options) {
-  const options = merge(defaultOptions, opts);
+  const options = merge({}, defaultOptions, opts);
   const mdFiles = getChildren(baseDir, options);
 
   const sidebars: Sidebar = [];
   // strip number of folder's name
   mdFiles.forEach((item) => {
-    item = item.slice(1);
-    const dirName = getDirName(item);
+    const dirName = options.hierarchy ? getDirName(item) : item.split(sep).pop() || 'index';
     const isDirectChildFile = item.search(sep) < 0;
-    if (options?.ignoreDirectory?.length
-      && options?.ignoreDirectory.findIndex(item => getDirName(item) === dirName) !== -1) {
+
+    if (options?.ignoreDirs?.length
+      && options?.ignoreDirs.findIndex(item => options.hierarchy ? dirName === getDirName(item) : dirName.indexOf(getDirName(item)) !== -1) !== -1) {
+      // terminating subsequent logic
       return;
     }
+
     const mdFileName = getName(item);
     const sidebarItemIndex = sidebars.findIndex(sidebar => sidebar.text === dirName);
-    if (sidebarItemIndex !== -1) {
+
+    if ((sidebarItemIndex !== -1) && options.hierarchy) {
       sidebars[sidebarItemIndex].items?.push({
         text: mdFileName,
         link: normalize(item)
       });
     } else {
+      const link = isDirectChildFile ?
+        mdFileName :
+        options.hierarchy
+          ? options.indexLink && join(dirName, options.indexLink)
+          : item
+
       sidebars.push({
         text: dirName,
-        link: normalize((isDirectChildFile ? mdFileName : options.indexLink && join(dirName, options.indexLink))),
-        items: isDirectChildFile ? undefined : [{
+        link: normalize(link),
+        items: (!options.hierarchy || isDirectChildFile) ? undefined : [{
           text: mdFileName,
           link: normalize(item)
         }],

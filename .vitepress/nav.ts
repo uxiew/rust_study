@@ -1,5 +1,10 @@
 export default [
-  { text: 'Home', link: '/' },
+  { text: 'Home', link: '/', activeMatch: '/' },
+  {
+    text: '初学备忘录📕',
+    link: '/notes/',
+    activeMatch: '/notes/'
+  },
   {
     text: 'Rust 官方',
     items: [
@@ -33,18 +38,6 @@ export default [
       { text: 'Rust 语言圣经', link: 'https://course.rs/' },
       { text: 'Rust Cookbook', link: 'https://rust-lang-nursery.github.io/rust-cookbook/' },
       { text: 'Comprehensive Rust', link: 'https://google.github.io/comprehensive-rust/' },
-    ]
-  },
-  {
-    text: 'Rust 资料',
-    items: [
-      { text: 'Rust 中文社区', link: 'https://rustcc.cn/' },
-      { text: 'Rust 文档网', link: 'https://rustwiki.org/' },
-      { text: 'Rust 程序设计语言', link: 'https://kaisery.github.io/trpl-zh-cn/' },
-      { text: 'Cheat Sheet', link: 'https://cheats.rs/' },
-      { text: 'Baby Steps (Nicholas D. Matsakis)', link: 'http://smallcultfollowing.com/babysteps/' },
-      { text: 'Begin Rust', link: 'https://www.beginrust.com/' },
-      { text: 'rustc 文档', link: 'https://doc.rust-lang.org/rustc/' },
     ]
   }
 ]
