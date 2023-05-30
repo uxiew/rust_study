@@ -1,56 +1,35 @@
-import { inBrowser, useRouter } from 'vitepress'
-import { onMounted } from 'vue'
-import { checkCodeIntegrity, fetch_with_timeout, isShellCode } from './utils'
+import { inBrowser } from 'vitepress'
+import { fetch_with_timeout, isShellCode } from '../utils'
 import "./styles.scss"
-
-function createBtn() {
-  const button = document.createElement('button')
-  button.setAttribute("title", "Run this code")
-  button.classList.add('run')
-  return button
-}
-
-function prepareRunner(onClick: (this: HTMLButtonElement, ev: MouseEvent) => any) {
-  (Array.from(document.querySelectorAll('div[class*="language-rust"]')) as HTMLDivElement[]).forEach((codeWrapper) => {
-    if (!checkCodeIntegrity(codeWrapper.querySelector("code")!.innerText)) return
-    const btn = createBtn()
-    btn.addEventListener('click', onClick)
-    codeWrapper.prepend(btn)
-  })
-}
-
 
 /**
 * @description add run code button follow copy button style
 */
 export function useRustCode() {
   if (inBrowser) {
-    const router = useRouter()
-    onMounted(() => {
-      router.onAfterRouteChanged = () => prepareRunner(onClick)
-      prepareRunner(onClick)
-    })
-
-    function onClick(e: MouseEvent) {
+    window.onclick = (e) => {
       const el = e.target as HTMLElement
-      const parent = el.parentElement
-      const sibling = parent?.querySelector("code")
-      if (!parent || !sibling) {
-        return
+      if (el.matches('div[class*="language-"] > button.run')) {
+        const parent = el.parentElement
+        const sibling = parent?.querySelector("code")
+        if (!parent || !sibling) {
+          return
+        }
+
+        let text = ''
+        console.log(el, parent, sibling)
+
+        sibling
+          .querySelectorAll('span.line:not(.diff.remove)')
+          .forEach((node) => (text += (node.textContent || '') + '\n'))
+        text = text.slice(0, -1)
+
+        if (isShellCode(parent.className)) {
+          text = text.replace(/^ *(\$|>) /gm, '').trim()
+        }
+
+        execCode(text, el)
       }
-
-      let text = ''
-
-      sibling
-        .querySelectorAll('span.line:not(.diff.remove)')
-        .forEach((node) => (text += (node.textContent || '') + '\n'))
-      text = text.slice(0, -1)
-
-      if (isShellCode(parent.className)) {
-        text = text.replace(/^ *(\$|>) /gm, '').trim()
-      }
-
-      execCode(text, el)
     }
 
   }

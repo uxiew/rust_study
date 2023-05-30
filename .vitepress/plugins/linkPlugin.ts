@@ -1,4 +1,5 @@
 import type MarkdownIt from 'markdown-it'
+import { normalizeLink } from './utils'
 
 export interface Options {
   books: any[]
@@ -16,7 +17,7 @@ export function linkPlugin(md: MarkdownIt, options: Options) {
       const ref = /(第\s\d+\s章)/.exec(text)
       if (ref) {
         text = ref[0]
-        rawText = rawText.replace(new RegExp(text, 'g'), `<a href=${encodeURI(link).replace(/\.md$/g, '.html')}>${text}</a>`)
+        rawText = rawText.replace(new RegExp(text, 'g'), `<a href=${normalizeLink(link)}>${text}</a>`)
       }
     }
 

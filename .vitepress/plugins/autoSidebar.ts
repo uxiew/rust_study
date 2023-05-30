@@ -62,6 +62,7 @@ const getChildren = function(parentPath: string, options: Options) {
   const files = globbySync(join(parentPath, pattern)).map((path) => {
     // fix parentPath relative dir
     const newPath = path.slice((new RegExp(`.*?${sep}`)).exec(path)![0].length, -3);
+
     // ignore some files
     if (ignoreMDFiles?.length && ignoreMDFiles.some((ifile) => newPath.endsWith(ifile))) {
       return 0;

@@ -3,6 +3,7 @@ import { REPO_URL } from './const'
 import nav from './nav'
 import { books, sidebar, SRC_DOC } from './sidebar'
 import { linkPlugin } from './plugins/linkPlugin'
+import { rustCodePlugin } from './plugins/rustcode/runCodePlugin'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -17,9 +18,12 @@ export default defineConfig({
     lineNumbers: true,
     config(md) {
       linkPlugin(md, { books })
+      rustCodePlugin(md)
     }
   },
   themeConfig: {
+    // @ts-ignore
+    ss: 'sss',
     outline: {
       level: [1, 6],
       label: '目录'

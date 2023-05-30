@@ -1,9 +1,7 @@
 import { join } from 'node:path'
 import { getSideBar } from './plugins/autoSidebar'
 
-
 export const SRC_DOC = "docs";
-
 
 export const notes = getSideBar(join(SRC_DOC, 'notes'), {
   hierarchy: false,
@@ -19,7 +17,6 @@ export const books = getSideBar(SRC_DOC, {
     return res ? Number(res[2]) + Number(res[3]) : 0
   }
 })
-
 
 export const sidebar = {
   '/notes/': notes,

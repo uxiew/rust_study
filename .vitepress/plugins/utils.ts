@@ -17,6 +17,12 @@ export const checkCodeIntegrity = (rawCode: string) => /main()/.test(
 )
 
 
+
+export const normalizeLink = (link: string) => {
+  return encodeURI(link).replace(/\.md$/g, '.html')
+}
+
+
 export function fetch_with_timeout(url: string, options: RequestInit, timeout = 6000) {
   return Promise.race([
     fetch(url, options),
