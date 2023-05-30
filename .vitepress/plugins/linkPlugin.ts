@@ -13,12 +13,19 @@ export function linkPlugin(md: MarkdownIt, options: Options) {
 
     // internal Link
     for (let { text, link } of options.books) {
+      const excludes = text.match(/(.*)（(.*)）/)
+      if (excludes && [excludes[1], excludes[2]].some((ex) => rawText.includes(ex))) continue
       if (rawText.includes(text)) continue
-      const ref = /(第\s\d+\s章)/.exec(text)
-      if (ref) {
-        text = ref[0]
-        rawText = rawText.replace(new RegExp(text, 'g'), `<a href=${normalizeLink(link)}>${text}</a>`)
-      }
+
+      // 内链匹配规则
+      const rules = [
+        /(第\s\d+\s章)/.exec(text),
+        /(第.部分)/.exec(text)
+      ]
+      rules.forEach((rule) => {
+        if (rule)
+          rawText = rawText.replace(new RegExp(rule[0], 'g'), `<a href=${normalizeLink(link)}>${rule[0]}</a>`)
+      })
     }
 
     // console.log(rawCode)

@@ -9,6 +9,7 @@ export default [
     text: 'Rust 官方',
     items: [
       { text: 'Rust 官网', link: 'https://www.rust-lang.org/' },
+      { text: 'Rust blog', link: 'https://blog.rust-lang.org/' },
       { text: 'Rust 标准库', link: 'https://doc.rust-lang.org/std/' },
       { text: 'Rust Playground', link: 'https://play.rust-lang.org/' },
       { text: 'Rust 参考', link: 'https://doc.rust-lang.org/reference/' },
