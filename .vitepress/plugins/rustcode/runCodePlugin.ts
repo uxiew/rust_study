@@ -2,7 +2,7 @@
 // It depends on preWrapper plugin.
 
 import type MarkdownIt from 'markdown-it'
-import { checkCodeIntegrity } from '../utils'
+import { checkCodeIntegrity, isShellCode } from '../utils'
 
 /*
   TODO:
@@ -24,6 +24,10 @@ export const rustCodePlugin = (md: MarkdownIt) => {
   md.renderer.rules.fence = (...args) => {
     const [tokens, idx] = args
     const info = tokens[idx].info
+    // if lang is txt,disable linenumbers
+    if (info === 'txt') {
+      tokens[idx].info = 'txt:no-line-numbers'
+    }
     if (/no_run/.test(info)) {
       tokens[idx].info = 'rust'
     }
@@ -37,7 +41,7 @@ export const rustCodePlugin = (md: MarkdownIt) => {
     }
 
     // console.log(checkCodeIntegrity(rawCode));
-    if (checkCodeIntegrity(rawCode) && !noRun) {
+    if (!isShellCode(rawCode) && checkCodeIntegrity(rawCode) && !noRun) {
       rawCode = rawCode.replace(/<button/, `<button title="Run this code" class="run"></button><button`)
     }
 

@@ -95,3 +95,8 @@
 table th:empty{
     display:none
 }
+
+
+image {
+    text-align:'center'
+}

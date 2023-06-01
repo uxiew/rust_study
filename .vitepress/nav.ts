@@ -32,11 +32,12 @@ export default [
   {
     text: 'Rust 开源书籍',
     items: [
+      { text: 'Rust 程序设计（中文版）', link: 'https://kaisery.github.io/trpl-zh-cn/' },
       { text: 'RustPrimer 初级', link: 'https://rustcc.gitbooks.io/rustprimer' },
       { text: 'Rust 宏小册', link: 'https://danielkeep.github.io/tlborm/book/' },
+      { text: 'Rust 语言圣经', link: 'https://course.rs/' },
       { text: 'Rust By Practice', link: 'https://zh.practice.rs/why-exercise.html' },
       { text: 'Rusty Book', link: 'https://rusty.course.rs/' },
-      { text: 'Rust 语言圣经', link: 'https://course.rs/' },
       { text: 'Rust Cookbook', link: 'https://rust-lang-nursery.github.io/rust-cookbook/' },
       { text: 'Comprehensive Rust', link: 'https://google.github.io/comprehensive-rust/' },
     ]

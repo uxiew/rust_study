@@ -81,7 +81,7 @@ async function execCode(code: string, runBtnEl: HTMLElement) {
     .then(response => (response as Response).json())
     .then(response => {
       if (response.result.trim() === '') {
-        resultBlock.innerText = "❕No output";
+        resultBlock.innerText = "No output";
         resultBlock.classList.add("result-no-output");
       } else {
         resultBlock.innerHTML = response.result.replace(/--explain (E\d+)/, `--explain <a target="_blank" href="https://doc.rust-lang.org/error_codes/$1.html">$1</a>`);
