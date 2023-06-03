@@ -1,10 +1,12 @@
 import { defineConfig } from 'vitepress'
+import markIt from 'markdown-it-mark'
 import { REPO_URL } from './const'
 import nav from './nav'
 import { books, sidebar, SRC_DOC } from './sidebar'
 import { linkPlugin } from './plugins/linkPlugin'
 import { rustCodePlugin } from './plugins/rustcode/runCodePlugin'
 import { imageSizePlugin } from './plugins/imagePlugin'
+import { alignPlugin } from './plugins/alignPlugin'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -18,6 +20,8 @@ export default defineConfig({
   markdown: {
     lineNumbers: true,
     config(md) {
+      alignPlugin(md)
+      markIt(md)
       linkPlugin(md, { books })
       rustCodePlugin(md)
       imageSizePlugin(md)

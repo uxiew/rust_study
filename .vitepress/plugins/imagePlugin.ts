@@ -1,7 +1,6 @@
 
 import type MarkdownIt from 'markdown-it';
 
-
 interface imageSizeOptions {
   lazy?: boolean
   caption?: boolean

@@ -7,9 +7,9 @@ Rust 有一个非常好的特性，就是它支持与 C 语言的 ABI 兼容。�
 In computer software，an application binary interface（ABI）is an interface between two program modules；often，one of these modules is a library or operating system facility，and the other is a program that is being run by a user.
 
 An ABI defines how data structures or computational routines are accessed in machine code，which is a low-level，hardware-dependent format.
-<div style="text-align: right;">
+--:
 —— Wikipedia
-<div>
+--:
 
 ---
 
