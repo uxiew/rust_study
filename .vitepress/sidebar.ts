@@ -8,8 +8,13 @@ export const notes = getSideBar(join(SRC_DOC, 'notes'), {
   ignoreMDFiles: ['index'],
 })
 
+export const codes = getSideBar(join(SRC_DOC, 'codes'), {
+  hierarchy: false,
+  ignoreMDFiles: ['index'],
+})
+
 export const books = getSideBar(SRC_DOC, {
-  ignoreDirs: ['notes'],
+  ignoreDirs: ['notes','codes'],
   indexLink: 'index',
   ignoreMDFiles: ['index'],
   sortBy: (path) => {
@@ -20,5 +25,6 @@ export const books = getSideBar(SRC_DOC, {
 
 export const sidebar = {
   '/notes/': notes,
+  '/code/': codes,
   '/': books
 }

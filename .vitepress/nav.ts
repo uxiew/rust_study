@@ -11,6 +11,7 @@ export default [
       { text: 'Rust 官网', link: 'https://www.rust-lang.org/' },
       { text: 'Rust blog', link: 'https://blog.rust-lang.org/' },
       { text: 'Rust 标准库', link: 'https://doc.rust-lang.org/std/' },
+      { text: 'Rust 源码', link: 'https://github.com/rust-lang/rust/blob/master/library/' },
       { text: 'Rust Playground', link: 'https://play.rust-lang.org/' },
       { text: 'Rust 参考', link: 'https://doc.rust-lang.org/reference/' },
       { text: 'Rust 秘典', link: 'https://doc.rust-lang.org/nomicon/' },
