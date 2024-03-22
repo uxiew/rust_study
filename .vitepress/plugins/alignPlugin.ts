@@ -1,13 +1,13 @@
 // from https://github.com/runarberg/markdown-it-math/tree/master
-
+// 定义 文本对齐方式
 import type MarkdownIt from 'markdown-it';
 import Token from 'markdown-it/lib/token';
 
 function alignRule(state, startLine, endLine, silent) {
   const delimiters = {
-    ':--': 'left',
-    '-:-': 'center',
-    '--:': 'right'
+    ':--': 'left', // 向左对齐
+    '-:-': 'center', // 居中对齐
+    '--:': 'right' // 向右对齐
   }
   const iLen = 3;
   let open = '';

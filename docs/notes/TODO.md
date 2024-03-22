@@ -46,3 +46,42 @@ https://annotate.code-reading.org/#/
 - [An overview of Node.js: architecture, APIs, event loop, concurrency](https://2ality.com/2022/09/nodejs-overview.html)
 
 - [Best practices for creating a modern npm package with security in mind](https://snyk.io/blog/best-practices-create-modern-npm-package/)
+
+
+
+## TODO
+
+
+## rust 与 node/dart/flutter/typescript/c/c++
+  [dtolnay/cxx](https://github.com/dtolnay/cxx): Safe interop between Rust and C++
+
+
+## rust 与 前端
+
+## rust 的 web/WebAssembly 开发
+
+## rust workspaces
+
+## rust 优化
+
+
+
+## Rust 代码审查者 Review Checklist
+
+作为 Rust 代码审查者，需要有一份 Checklist 来指导自己的日常审查工作：
+
+- 是否遵循 Rust 通用编码规范 √
+- 代码组织结构是否合理 √
+- 代码抽象架构是否合理，是否具有扩展性 √
+- 代码封装性是否合理 √
+- 错误处理是否完备统一合理 √
+- 是否遵循 Unsafe Rust 安全抽象实践 √
+- 代码单元测试是否达到指定覆盖率 √
+  - 以及特别指定必要测试：性能测试 和 模糊测试
+- 文档注释和普通注释是否完整和合理 √
+- 代码优化 ：
+  - 是否存在肉眼可见的性能优化问题 √
+  - 编译文件大小是否需要优化 √
+  - 代码中是否包含重复代码 √
+
+欢迎大家补充。

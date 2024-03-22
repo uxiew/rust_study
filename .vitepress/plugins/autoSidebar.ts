@@ -1,4 +1,6 @@
 // https://github.com/luciozhang/vitepress-plugin-autobar/blob/master/src/index.ts
+// 根据当前的文件和目录结构，自动生成目录导航
+//
 import merge from 'lodash/merge';
 import sortBy from 'lodash/sortBy';
 import remove from 'lodash/remove';

@@ -1,4 +1,6 @@
 import { defineConfig } from 'vitepress'
+import { SearchPlugin } from "@ver5/vitepress-plugin-search";
+
 import markIt from 'markdown-it-mark'
 import { REPO_URL } from './const'
 import nav from './nav'
@@ -13,7 +15,21 @@ export default defineConfig({
   lang: 'zh-CN',
   title: "🦀 Dive into Rust",
   description: "Documents my learning journey of Rust.",
+  head: [
+    ['link', { rel: 'icon', href: '/logo.png' }],
+    ['meta', { property: 'og:site_name', content: 'Rust_Notes' }],
+  ],
   srcDir: SRC_DOC,
+  vite: {
+    plugins: [SearchPlugin({
+      previewLength: 42,
+      buttonLabel: "搜索",
+      placeholder: "搜索文档",
+      allow: [],
+      ignore: [],
+      tokenize: "forward"
+    })]
+  },
 
   lastUpdated: true,
   cleanUrls: false,
@@ -29,7 +45,6 @@ export default defineConfig({
   },
   themeConfig: {
     // @ts-ignore
-    ss: 'sss',
     outline: {
       level: [1, 6],
       label: '目录'

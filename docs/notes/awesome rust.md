@@ -4,8 +4,6 @@
 
 - [Actix](https://actix.rs/)
 
-- [seed](https://actix.rs/)
-
 ## Operating Systems
 
 - [Redox](https://www.redox-os.org/)
@@ -15,6 +13,8 @@
 - [Rux](https://github.com/sorpaas/rux)
 
 - [Tock](https://github.com/tock/tock)
+
+- [Rust for Linux](https://rust-for-linux.com/ )
 
 ## Editor
 
@@ -34,6 +34,7 @@
 
 - [Xilem](https://github.com/linebender/xilem/)
   An experimental Rust native UI framework
+
 - [Rui](https://github.com/audulus/rui)
 
 - [Dioxus](https://dioxuslabs.com/)
@@ -47,37 +48,95 @@
 
 - [shadowsocks-rust](https://github.com/shadowsocks/shadowsocks-rust)
 
-## makepad
-
-    [makepad](https://makepad.dev/)
-
 ## nushell
 
 https://www.nushell.sh/documentation.html
 采用 shell 的 Unix 哲学，其中管道将简单的命令连接在一起，并将其引入现代风格的开发。
 
-## pua-lang
+## 语言
 
-https://hub.fastgit.org/flaneur2020/pua-lang
+- [pua-lang](https://hub.fastgit.org/flaneur2020/pua-lang)
 
 ## servo
 
-[servo/servo](https://github.com/servo/servo) 是一种现代的、高性能的浏览器引擎，为应用程序和嵌入式使用而开发。
+- [servo/servo](https://github.com/servo/servo) 是一种现代的、高性能的浏览器引擎，为应用程序和嵌入式使用而开发。
 
-## alacritty
+## 终端
 
-https://github.com/alacritty/alacritty
+- [alacritty](https://github.com/alacritty/alacritty)
 
-## 编辑器
 
-### [helix](https://github.com/helix-editor/helix)
+## 命令行
+- Clap
+  用于构建命令行接口，简化了命令行参数的解析和处理。
 
-# 开发
+## 序列化
+- [serde](https://github.com/serde-rs/serde)
+  一个序列化和反序列化的框架。Serde极其高效，可以处理各种数据格式，如JSON、YAML和Bincode。
 
-```
-后台 ctix-web+rust 框架
-前端 antd+react+ts
-```
+## 多线程
+- Rayon
+  一个数据并行处理库，用于简化多线程编程。
+
+## 并发
+- Crossbeam
+  提供了一系列用于并发编程的工具，如通道、原子操作、锁等。
+
+## 异步
+- [Tokio](https://github.com/tokio-rs/tokio)
+  一个异步运行时，用于编写高性能的网络应用。它提供了事件驱动的非阻塞 I/O 模型。
+
+- Async-std
+  提供了类似于标准库的异步版本，用于构建异步应用。
+
+
+## Wasm
+
+- [https://github.com/yewstack/yew](https://github.com/yewstack/yew)
+  Rust / Wasm framework for building client web apps
+- [trunk](https://github.com/trunk-rs/trunk)
+  Build, bundle & ship your Rust WASM application to the web.
+
+## web 应用
+
+- [Leptos](https://github.com/leptos-rs/leptos)
+  Leptos是一个基于“响应式” ui 概念的前沿全栈 web 框架。这意味着只要底层数据发生变化，UI 就会自动更新。
+
+- [Rocket]
+  一个用于构建 web 应用的框架，以简易性和速度著称。提供了宏来简化路由和请求处理。
+
+## ORM
+- [Diesel](https://github.com/diesel-rs/diesel)
+  一个ORM（对象关系映射）框架，支持多种数据库后端，如 PostgreSQL、MySQL 和 SQLite。
+
+- [SeaORM](https://github.com/SeaQL/sea-orm)
+
+## rewriting everything in Rust
+[I spent six months rewriting everything in Rust](https://www.youtube.com/watch?v=vL2nB1VwX1M)
+
+- [Clap](https://github.com/clap-rs/clap)
+- [Bevy](https://github.com/bevyengine/bevy)
+- [wgpu](https://github.com/gfx-rs/wgpu)
+- [Axum](https://github.com/tokio-rs/axum)
+- [Tower](https://github.com/tower-rs/tower)
+- [Embassy](https://github.com/embassy-rs/embassy)
+- [Rayon](https://github.com/rayon-rs/rayon)
+- [nom](https://github.com/rust-bakery/nom)
+- [Cargo Lambda](https://github.com/cargo-lambda/cargo-lambda)
+- [napi-rs](https://github.com/napi-rs/napi-rs)
+- [neon](https://github.com/neon-bindings/neon)
+- [Polars](https://github.com/pola-rs/polars)
+- [PlanetScale](https://planetscale.com/pricing)
+- [serde](https://github.com/serde-rs/serde)
+- [sqlx](https://github.com/launchbadge/sqlx)
+- [Trunk](https://github.com/trunk-rs/trunk)
+- [Yew](https://github.com/yewstack/yew)
+- [Leptos](https://github.com/leptos-rs/leptos)
+- [Rive](https://github.com/rive-app/rive-wasm)
+- [Mux](https://www.mux.com/)
+
+## rust & frontend
+[rust-fe](https://github.com/ChandlerVer5/rust-fe)
 
 ## node
 
@@ -88,6 +147,12 @@ https://github.com/alacritty/alacritty
 - [https://github.com/swc-project/swc](https://github.com/swc-project/swc)对标 ts/babel
 
 ## 前端工具
+
+- [rust-for-fe](https://github.com/i5ting/learn-rust-for-fe)
+  Rust是未来前端基础设施
+
+- [oxc-project/oxc](https://github.com/oxc-project/oxc)
+  A collection of JavaScript tools written in Rust.
 
 - [https://github.com/volta-cli/volta](https://github.com/volta-cli/volta)
   对标 nvm+npm
@@ -104,13 +169,6 @@ https://github.com/alacritty/alacritty
 
 - [https://github.com/CGQAQ/rusty-source-map](https://github.com/CGQAQ/rusty-source-map)
   对标 [Mozilla/source-map](https://github.com/mozilla/source-map)
-
-## Wasm
-
-- [https://github.com/yewstack/yew](https://github.com/yewstack/yew)
-  Rust / Wasm framework for building client web apps
-- [https://github.com/thedodd/trunk](https://github.com/thedodd/trunk)
-  Build, bundle & ship your Rust WASM application to the web.
 
 ## 测试
 
@@ -165,4 +223,25 @@ UNIX style tool to pretty print json
 - swc-css: SWC 的 CSS parser，类似 PostCSS
 
 - [parcel-bundler/lightningcss](https://github.com/parcel-bundler/lightningcss)
-  : An extremely fast CSS parser, transformer, bundler, and minifier written in Rust. (github.com)
+  An extremely fast CSS parser, transformer, bundler, and minifier written in Rust. (github.com)
+
+
+## 发布
+- [shuttle](https://github.com/shuttle-hq/shuttle)
+  无需编写任何基础设施文件即可构建和发布后端。
+
+## 与其他语言
+- [Rust in Flutter](https://github.com/cunarist/rinf)
+
+## 跨平台
+- [Tauri](https://tauri.app/)
+- [Robius](https://github.com/project-robius)
+- [makepad](https://github.com/makepad/makepad)
+
+## 安装
+- [Cargo Binstall](https://github.com/cargo-bins/cargo-binstall)
+  提供了一种低复杂度的机制来安装 Rust 二进制文件，作为从源代码构建（通过 Cargo install ）或手动下载包的替代方案。
+
+## 交叉编译
+现在有了更加方便的方法，那就是 [cargo-zigbuid](https://github.com/rust-cross/cargo-zigbuild)。
+[Zig](https://ziglang.org) 是一种通用编程语言和工具链，用于维护健壮、最佳和可重用的软件，而交叉编译是 Zig 的一个卖点。

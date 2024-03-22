@@ -14,7 +14,7 @@ export const codes = getSideBar(join(SRC_DOC, 'codes'), {
 })
 
 export const books = getSideBar(SRC_DOC, {
-  ignoreDirs: ['notes','codes'],
+  ignoreDirs: ['notes', 'codes'],
   indexLink: 'index',
   ignoreMDFiles: ['index'],
   sortBy: (path) => {

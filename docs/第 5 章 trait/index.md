@@ -16,7 +16,7 @@ trait WithName {
     fn get_name(&self) -> &str;
 
     fn print(&self) {
-    println!("My name is {}", self.get_name())
+      println!("My name is {}", self.get_name())
     }
 }
 ```

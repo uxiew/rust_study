@@ -4,7 +4,7 @@
 
 在某种意义上，标记特征（marker trait）只是一个内部没有任何项的 trait。即使没有任何特殊的编译器支持，这有时也是有用的（例如 [sealed traits](https://rust-lang.github.io/api-guidelines/future-proofing.html)）。
 
-从另一种意义上说，有一个不稳定的`#[marker]`属性，您可以将其放在 marker trait 上，以便[选择加入 RFC 12684 的重叠实现](https://github.com/rust-lang/rust/pull/53693)（也是不稳定的）。
+从另一种意义上说，有一个不稳定的`#[marker]`属性，您可以将其放在 marker trait 上，以便选择加入 RFC 12684 的重叠实现（也是不稳定的）。
 
 还有一种意思是 [std::marker](https://doc.rust-lang.org/src/core/marker/index.html) 中的东西。
 其中大多数是标记特征，许多也是 [auto traits](https://github.com/rust-lang/rust/issues/13231)（另一个不稳定的特性），而且几乎所有这些 trait 都有特殊的编译器行为。
