@@ -10,6 +10,9 @@ import { rustCodePlugin } from "./plugins/rustcode/runCodePlugin";
 import { imageSizePlugin } from "./plugins/imagePlugin";
 import { alignPlugin } from "./plugins/alignPlugin";
 
+const REPO_NAME_BASE = "rust_study";
+const OUT_DIR = "dist";
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: "zh-CN",
@@ -20,7 +23,8 @@ export default defineConfig({
     ["meta", { property: "og:site_name", content: "Rust_Notes" }],
   ],
   srcDir: SRC_DOC,
-  outDir: "dist",
+  outDir: OUT_DIR,
+  base: REPO_NAME_BASE,
   vite: {
     plugins: [
       SearchPlugin({
