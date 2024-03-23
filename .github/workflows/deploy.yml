@@ -41,7 +41,7 @@ jobs:
         with:
           node-version: 20
           cache: pnpm # or pnpm / yarn
-        run: pnpm install
+      - run: pnpm install
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Install dependencies
