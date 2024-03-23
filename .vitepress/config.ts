@@ -10,7 +10,7 @@ import { rustCodePlugin } from "./plugins/rustcode/runCodePlugin";
 import { imageSizePlugin } from "./plugins/imagePlugin";
 import { alignPlugin } from "./plugins/alignPlugin";
 
-const REPO_NAME_BASE = "rust_study";
+const REPO_NAME_BASE = "";
 const OUT_DIR = "dist";
 
 // https://vitepress.dev/reference/site-config
