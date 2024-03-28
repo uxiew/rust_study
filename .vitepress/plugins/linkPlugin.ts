@@ -1,10 +1,10 @@
 import type MarkdownIt from 'markdown-it'
 import { normalizeLink } from './utils'
+import { BASE_NAME } from '../const'
 
 export interface Options {
   books: any[]
 }
-
 
 const link_rules = {
   "RFC 文档|RFC 项目": "https://rust-lang.github.io/rfcs/",
@@ -18,8 +18,9 @@ const getRegRules = (text: string) => [
 ]
 
 function toLinkUrl(raw: string, rule: string, link: string) {
-  return raw.replace(new RegExp(rule, 'g'), (matchText) => `<a href=${normalizeLink(link)}>${matchText}</a>`)
+  return raw.replace(new RegExp(rule, 'g'), (matchText) => `<a href=${normalizeLink(BASE_NAME + link)}>${matchText}</a>`)
 }
+
 /**
 * 将对应的部分、章节进行链接，方便快速跳转。
 */
@@ -42,6 +43,7 @@ export function linkPlugin(md: MarkdownIt, options: Options) {
       })
     }
 
+    // 自定义规则匹配
     Object.keys(link_rules).forEach((ruleKey) => {
       rawText = toLinkUrl(rawText, ruleKey, link_rules[ruleKey])
     })

@@ -2,16 +2,14 @@ import { defineConfig } from "vitepress";
 import { SearchPlugin } from "@ver5/vitepress-plugin-search";
 
 import markIt from "markdown-it-mark";
-import { REPO_URL } from "./const";
+import { REPO_URL, OUT_DIR, BASE_NAME, SRC_DOC } from "./const";
 import nav from "./nav";
-import { books, sidebar, SRC_DOC } from "./sidebar";
+import { books, sidebar } from "./sidebar";
 import { linkPlugin } from "./plugins/linkPlugin";
 import { rustCodePlugin } from "./plugins/rustcode/runCodePlugin";
 import { imageSizePlugin } from "./plugins/imagePlugin";
 import { alignPlugin } from "./plugins/alignPlugin";
 
-const REPO_NAME_BASE = "/rust_study";
-const OUT_DIR = "dist";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -24,7 +22,7 @@ export default defineConfig({
   ],
   srcDir: SRC_DOC,
   outDir: OUT_DIR,
-  base: REPO_NAME_BASE,
+  base: BASE_NAME,
   vite: {
     plugins: [
       SearchPlugin({
@@ -34,10 +32,10 @@ export default defineConfig({
         allow: [],
         ignore: [],
         tokenize: "forward",
+        separator: ' ', // fix search result link problems
       }),
     ],
   },
-
   lastUpdated: true,
   cleanUrls: false,
   markdown: {

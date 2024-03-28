@@ -3,11 +3,12 @@
 //
 import merge from 'lodash/merge';
 import sortBy from 'lodash/sortBy';
-import remove from 'lodash/remove';
 import { globbySync } from '@cjs-exporter/globby';
-import { sep, basename, join } from 'node:path';
+import { basename, resolve, join } from 'node:path';
 
 type Sidebar = SidebarGroup[] | SidebarItem;
+
+const sep = '/';
 
 interface SidebarItem {
   text: string
@@ -58,24 +59,23 @@ const getDirName = (path: string) => {
 };
 
 // Load all MD files in a specified directory
-const getChildren = function(parentPath: string, options: Options) {
+const getChildren = function (parentPath: string, options: Options) {
   const { indexLink, sortBy: sortFn, ignoreMDFiles, hierarchy } = options
-  const pattern = '/**/*.md';
-  const files = globbySync(join(parentPath, pattern)).map((path) => {
+  const pattern = join('**', '*.md');
+  const files = globbySync(join(parentPath, pattern).replace(/\\/g, sep)).map((path) => {
     // fix parentPath relative dir
-    const newPath = path.slice((new RegExp(`.*?${sep}`)).exec(path)![0].length, -3);
+    const newPath = path.slice(((/.*?\//).exec(path))?.[0].length, -3);
 
     // ignore some files
-    if (ignoreMDFiles?.length && ignoreMDFiles.some((ifile) => newPath.endsWith(ifile))) {
-      return 0;
+    if (ignoreMDFiles?.length && ignoreMDFiles.some((f) => newPath.endsWith(f))) {
+      return { path: '' };
     }
-    if (hierarchy && indexLink === basename(newPath)) return 0;
+    if (hierarchy && indexLink === basename(newPath)) return { path: '' };
     return { path: newPath };
-  });
+  }).filter(file => !!file.path);
 
-  remove(files, file => file === 0);
   // Return the ordered list of files, sort by Options.sortBy or 'path'
-  return sortBy(files, sortFn ? (f) => sortFn(f!.path) : ['path']).map(file => file?.path || '');
+  return sortBy(files, sortFn ? (f) => sortFn(f.path) : ['path']).map(file => file.path || '');
 };
 
 /**
@@ -84,7 +84,7 @@ const getChildren = function(parentPath: string, options: Options) {
   ss.dev/reference/default-theme-sidebar#the-basics
 */
 function normalize(path: string) {
-  return sep + path + '.md'
+  return (sep + path + '.md')
 }
 
 // Return sidebar config for given baseDir.

@@ -1,7 +1,6 @@
 import { join } from 'node:path'
 import { getSideBar } from './plugins/autoSidebar'
-
-export const SRC_DOC = "docs";
+import { SRC_DOC } from './const'
 
 export const notes = getSideBar(join(SRC_DOC, 'notes'), {
   hierarchy: false,
@@ -14,7 +13,7 @@ export const codes = getSideBar(join(SRC_DOC, 'codes'), {
 })
 
 export const books = getSideBar(SRC_DOC, {
-  ignoreDirs: ['notes', 'codes'],
+  ignoreDirs: ['notes', 'codes', 'images', 'public'],
   indexLink: 'index',
   ignoreMDFiles: ['index'],
   sortBy: (path) => {
