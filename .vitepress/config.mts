@@ -1,8 +1,10 @@
+import { resolve } from "node:path";
 import { defineConfig } from "vitepress";
 import { SearchPlugin } from "@ver5/vitepress-plugin-search";
 
 import markIt from "markdown-it-mark";
-import { REPO_URL, OUT_DIR, BASE_NAME, SRC_DOC } from "./const";
+import { REPO_URL, SRC_DOC, OUT_DIR, AUTHOR } from "./const";
+import { gHLink2JSON } from "./utils";
 import nav from "./nav";
 import { books, sidebar } from "./sidebar";
 import { linkPlugin } from "./plugins/linkPlugin";
@@ -10,7 +12,9 @@ import { rustCodePlugin } from "./plugins/rustcode/runCodePlugin";
 import { imageSizePlugin } from "./plugins/imagePlugin";
 import { alignPlugin } from "./plugins/alignPlugin";
 
+const BASE_PATH = gHLink2JSON(REPO_URL).label.replace(AUTHOR, '');
 
+console.log(resolve(__dirname))
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: "zh-CN",
@@ -22,8 +26,13 @@ export default defineConfig({
   ],
   srcDir: SRC_DOC,
   outDir: OUT_DIR,
-  base: BASE_NAME,
+  base: BASE_PATH,
   vite: {
+    resolve: {
+      alias: {
+        "@vp": resolve(__dirname),
+      },
+    },
     plugins: [
       SearchPlugin({
         previewLength: 42,
@@ -66,7 +75,7 @@ export default defineConfig({
       copyright: "Copyright © 2023-present ChandlerVer5",
     },
     editLink: {
-      pattern: REPO_URL + "edit/main/docs/:path",
+      pattern: REPO_URL + "/edit/main/docs/:path",
       text: "Edit this page on GitHub",
     },
     // socialLinks: [

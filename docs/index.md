@@ -1,7 +1,15 @@
 # Dive Into Rust!
 
-> 项目地址：[ChandlerVer5/rust_study](https://github.com/ChandlerVer5/rust_study/)
+<script setup>
+import { ref } from 'vue'
+import { REPO_URL } from '@vp/const'
+import { gHLink2JSON } from '@vp/utils'
 
+const repo = ref(gHLink2JSON(REPO_URL))
+</script>
+
+> 项目地址：<a :href=repo.url target="_blank">{{repo.label}}</a>
+>
 > 随着作者的学习，持续更新、修正...
 
 **Rust 是一种低级静态类型的多范式编程语言，专注于安全性和性能**。

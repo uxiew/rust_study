@@ -1,6 +1,5 @@
 import type MarkdownIt from 'markdown-it'
 import { normalizeLink } from './utils'
-import { BASE_NAME } from '../const'
 
 export interface Options {
   books: any[]
@@ -18,7 +17,7 @@ const getRegRules = (text: string) => [
 ]
 
 function toLinkUrl(raw: string, rule: string, link: string) {
-  return raw.replace(new RegExp(rule, 'g'), (matchText) => `<a href=${normalizeLink(BASE_NAME + link)}>${matchText}</a>`)
+  return raw.replace(new RegExp(rule, 'g'), (matchText) => `<a href=${normalizeLink(link)} target="_blank">${matchText}</a>`)
 }
 
 /**
