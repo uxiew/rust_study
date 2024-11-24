@@ -6,12 +6,8 @@
     "docs:preview": "vitepress preview"
   },
   "devDependencies": {
-    "@codemirror/lang-rust": "^6.0.1",
-    "@codemirror/theme-one-dark": "^6.1.2",
     "@nolebase/vitepress-plugin-enhanced-mark": "^2.2.0",
-    "@nolebase/vitepress-plugin-inline-link-preview": "^2.2.0",
-    "@types/markdown-it": "^14.1.1",
-    "@types/markdown-it-container": "^2.0.5",
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^20.2.3",
     "@ver5/markdown-it-align": "^1.0.0",
     "@ver5/markdown-it-image": "^1.0.0",
@@ -21,13 +17,10 @@
     "@ver5/vitepress-plugin-search": "^1.0.7",
     "@ver5/vitepress-plugin-sidebar": "^1.0.0",
     "@vueuse/core": "^10.1.2",
-    "flexsearch": "^0.7.31",
     "markdown-it-container": "^3.0.0",
     "markdown-it-mark": "^3.0.1",
     "sass": "^1.62.1",
     "tslib": "^2.5.2",
-    "vite": "^5.2.6",
-    "vitepress": "^1.2.3",
-    "vue": "^3.3.4"
+    "vitepress": "^1.5.0"
   }
 }

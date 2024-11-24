@@ -27,6 +27,12 @@ export default defineConfig({
   outDir: OUT_DIR,
   base: BASE_PATH,
   vite: {
+    ssr: {
+      noExternal: [
+        '@ver5/vitepress-plugin-link-preview',
+        '@ver5/vitepress-plugin-rust-playground'
+      ]
+    },
     resolve: {
       alias: {
         "@vp": resolve(__dirname),
@@ -58,6 +64,7 @@ export default defineConfig({
     config(md) {
       md
         .use<rustPlaygroundOptions>(rustPlaygroundPlugin)
+        .use<ImageOptions>(imagePlugin)
         .use(markIt)
         .use(alignPlugin)
         .use<InternalLinkOptions>(internalLinkPlugin, {
@@ -65,8 +72,7 @@ export default defineConfig({
           base: BASE_PATH,
           rules: link_plugin_rules
         })
-        .use<ImageOptions>(imagePlugin)
-        .use(InlineLinkPreviewElementTransform);
+        .use(InlineLinkPreviewElementTransform)
     },
   },
   themeConfig: {
