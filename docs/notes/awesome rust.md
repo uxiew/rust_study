@@ -240,7 +240,7 @@ UNIX style tool to pretty print json
 
 ## 安装
 - [Cargo Binstall](https://github.com/cargo-bins/cargo-binstall)
-  提供了一种低复杂度的机制来安装 Rust 二进制文件，作为从源代码构建（通过 Cargo install ）或手动下载包的替代方案。
+  提供了一种低复杂度的机制来安装 Rust 二进制文件，作为从源代码构建（通过 Cargo install）或手动下载包的替代方案。
 
 ## 交叉编译
 现在有了更加方便的方法，那就是 [cargo-zigbuid](https://github.com/rust-cross/cargo-zigbuild)。

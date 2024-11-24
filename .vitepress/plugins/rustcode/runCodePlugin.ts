@@ -1,8 +1,9 @@
 // markdown-it plugin for generating line numbers.
 // It depends on preWrapper plugin.
 
-import type MarkdownIt from 'markdown-it'
-import { checkCodeIntegrity, isShellCode } from '../utils'
+import type MarkdownIt from "markdown-it";
+import { type PluginWithOptions } from "markdown-it";
+import { checkCodeIntegrity, isShellCode } from "../utils";
 
 /*
   TODO:
@@ -18,33 +19,45 @@ import { checkCodeIntegrity, isShellCode } from '../utils'
   * `edition2015`, `edition2018`, `edition2021` — Forces the use of a specific Rust edition.
   See[`rust.edition`] to set this globally.
 */
-export const rustCodePlugin = (md: MarkdownIt) => {
-  const fence = md.renderer.rules.fence!
+export const rustCodePlugin: PluginWithOptions<{ tag: string } | null | undefined> = (md: MarkdownIt, options) => {
+  const fence = md.renderer.rules.fence!;
 
   md.renderer.rules.fence = (...args) => {
-    const [tokens, idx] = args
-    const info = tokens[idx].info
+    const [tokens, idx] = args;
+    const info = tokens[idx].info;
     // if lang is txt,disable linenumbers
-    if (info === 'txt') {
-      tokens[idx].info = 'txt:no-line-numbers'
+    if (info === "txt") {
+      tokens[idx].info = "txt:no-line-numbers";
     }
-    if (/no_run/.test(info)) {
-      tokens[idx].info = 'rust'
+
+    if (info === "") {
+      tokens[idx].info = "log:no-line-numbers";
     }
-    let rawCode = fence(...args)
+
+    // 默认为 rust 语言
+    const noRun = /no_run/.test(info);
+    if (noRun) {
+      tokens[idx].info = "rust";
+    }
+
+    let rawCode = fence(...args);
+
+    if (isShellCode(rawCode) || !/rust|ts/.test(info)) {
+      return rawCode;
+    }
+
+    // console.log(tokens, idx)
 
     // no_run
-    const noRun = /no_run/.test(info)
     if (noRun) {
-      rawCode = rawCode
-        .replace(/"(language-rust)/, '"$1 no_run')
+      rawCode = rawCode.replace(/"(language-rust)/, '"$1 no_run');
     }
 
-    // console.log(checkCodeIntegrity(rawCode));
-    if (!isShellCode(rawCode) && checkCodeIntegrity(rawCode) && !noRun) {
-      rawCode = rawCode.replace(/<button/, `<button title="Run this code" class="run"></button><button`)
-    }
+    if (checkCodeIntegrity(info, rawCode) && !noRun) {
+      rawCode = rawCode.replace(/<button/, `<button title="Run this code" class="run"></button><button`);
 
+      rawCode = rawCode + `<Editor lang="${info}" id="${Math.random().toString(16).slice(2)}"/>`
+    }
 
     //   (!enable && ) ||
     //   (enable && /:no-line-numbers($| )/.test(info))
@@ -69,6 +82,6 @@ export const rustCodePlugin = (md: MarkdownIt) => {
     //   .replace(/<\/div>$/, `${lineNumbersWrapperCode}</div>`)
     //   .replace(/"(language-[^"]*?)"/, '"$1 line-numbers-mode"')
 
-    return rawCode
-  }
-}
+    return rawCode;
+  };
+};

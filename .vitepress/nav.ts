@@ -12,7 +12,7 @@ export default [
     items: [
       { text: "Rust 官网", link: "https://www.rust-lang.org/" },
       { text: "Rust 源码", link: "https://github.com/rust-lang/rust/blob/master/library/" },
-      { text: "Rust blog", link: "https://blog.rust-lang.org/" },
+      { text: "Rust 博客", link: "https://blog.rust-lang.org/" },
       { text: "Rust 标准库", link: "https://doc.rust-lang.org/std/" },
       { text: "Rust Playground", link: "https://play.rust-lang.org/" },
       { text: "Rust 参考", link: "https://doc.rust-lang.org/reference/" },
@@ -20,6 +20,7 @@ export default [
       { text: "Rust 未稳定特性手册", link: "https://doc.rust-lang.org/nightly/unstable-book/" },
       { text: "Rust 版本指南", link: "https://doc.rust-lang.org/nightly/edition-guide/" },
       { text: "Rust RFCs", link: "https://rust-lang.github.io/rfcs/" },
+      { text: "Rust API 指南", link: "https://rust-lang.github.io/api-guidelines/" },
       { text: "Rust 社区", link: "https://users.rust-lang.org/" },
       { text: "cargo 文档", link: "https://doc.rust-lang.org/cargo/" },
       { text: "rustc 文档", link: "https://doc.rust-lang.org/rustc/" },
@@ -49,6 +50,7 @@ export default [
       { text: "Rust Cookbook", link: "https://rust-lang-nursery.github.io/rust-cookbook/" },
       { text: "The Rust Performance Book", link: "https://nnethercote.github.io/perf-book/profiling.html" },
       { text: "Rust Atomics and Locks", link: "https://rustcc.github.io/Rust_Atomics_and_Locks/" },
+      { text: "Command Line Applications in Rust", link: "https://rust-cli.github.io/book/index.html/" },
     ],
   },
 ];

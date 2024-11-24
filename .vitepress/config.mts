@@ -3,18 +3,17 @@ import { defineConfig } from "vitepress";
 import { SearchPlugin } from "@ver5/vitepress-plugin-search";
 
 import markIt from "markdown-it-mark";
-import { REPO_URL, SRC_DOC, OUT_DIR, AUTHOR } from "./const";
-import { gHLink2JSON } from "./utils";
+import { REPO_URL, SRC_DOC, OUT_DIR, BASE_PATH, link_plugin_rules } from "./const";
 import nav from "./nav";
 import { books, sidebar } from "./sidebar";
-import { linkPlugin } from "./plugins/linkPlugin";
-import { rustCodePlugin } from "./plugins/rustcode/runCodePlugin";
-import { imageSizePlugin } from "./plugins/imagePlugin";
-import { alignPlugin } from "./plugins/alignPlugin";
 
-const BASE_PATH = gHLink2JSON(REPO_URL).label.replace(AUTHOR, '');
+import { InlineLinkPreviewElementTransform } from "@ver5/vitepress-plugin-link-preview/markdown";
 
-console.log(resolve(__dirname))
+import { type rustPlaygroundOptions, rustPlaygroundPlugin } from "@ver5/vitepress-plugin-rust-playground/markdown";
+import { type ImageOptions, imagePlugin } from "@ver5/markdown-it-image";
+import { type InternalLinkOptions, internalLinkPlugin } from "@ver5/markdown-it-internal-link";
+import { alignPlugin } from "@ver5/markdown-it-align";
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: "zh-CN",
@@ -41,20 +40,33 @@ export default defineConfig({
         allow: [],
         ignore: [],
         tokenize: "forward",
-        separator: ' ', // fix search result link problems
+        separator: " ", // fix search result link problems
       }),
     ],
   },
   lastUpdated: true,
   cleanUrls: false,
   markdown: {
+    container: {
+      tipLabel: "提示",
+      warningLabel: "警告",
+      dangerLabel: "危险",
+      infoLabel: "信息",
+      detailsLabel: "详细信息",
+    },
     lineNumbers: true,
     config(md) {
-      alignPlugin(md);
-      markIt(md);
-      linkPlugin(md, { books });
-      rustCodePlugin(md);
-      imageSizePlugin(md);
+      md
+        .use<rustPlaygroundOptions>(rustPlaygroundPlugin)
+        .use(markIt)
+        .use(alignPlugin)
+        .use<InternalLinkOptions>(internalLinkPlugin, {
+          sidebar: books,
+          base: BASE_PATH,
+          rules: link_plugin_rules
+        })
+        .use<ImageOptions>(imagePlugin)
+        .use(InlineLinkPreviewElementTransform);
     },
   },
   themeConfig: {

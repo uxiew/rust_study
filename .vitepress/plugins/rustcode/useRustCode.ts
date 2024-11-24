@@ -37,13 +37,13 @@ export function useRustCode() {
 /** 获取 rust 版本 */
 function getEdition(code_block: HTMLElement) {
   let classes = code_block.querySelector("code")?.classList!;
-  let edition = "2015";
+  let edition = "2021";
   if (classes.contains("edition2018")) {
     edition = "2018";
   } else if (classes.contains("edition2021")) {
     edition = "2021";
   }
-  return "2018";
+  return edition;
 }
 
 // https://github.com/rust-lang/mdBook/blob/master/src/theme/book.js#L102
