@@ -10,7 +10,7 @@
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^20.2.3",
     "@ver5/markdown-it-align": "^1.0.0",
-    "@ver5/markdown-it-image": "^1.0.0",
+    "@ver5/markdown-it-image": "^1.0.1",
     "@ver5/markdown-it-internal-link": "^1.0.0",
     "@ver5/vitepress-plugin-link-preview": "^1.0.0",
     "@ver5/vitepress-plugin-rust-playground": "^1.0.1",

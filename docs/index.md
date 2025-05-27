@@ -10,7 +10,10 @@ const repo = ref(gHLink2JSON(REPO_URL))
 
 > 项目地址：<a :href=repo.url target="_blank">{{repo.label}}</a>
 >
-> 随着作者的学习，持续更新、修正...
+> 随着作者的学习，持续更新中...
+>
+> 如果你对 Rust 有疑问，可以到我的 [Rust 知识库](https://ima.qq.com/wiki/?shareId=57343fb8dd485b42520adf91183128d0bdb04c7a731f202507df44d360aec9fe) 提问，与 AI 一起学习。
+> <img src="/rust-ima.png" alt="rust 知识库" width="200" >
 
 **Rust 是一种低级静态类型的多范式编程语言，专注于安全性和性能**。
 
