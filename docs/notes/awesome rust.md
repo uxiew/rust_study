@@ -1,3 +1,5 @@
+Rust 生态系统由许多库和工具组成，可用于构建各种应用程序。其中一些库包括：
+
 ## Rust 前端框架
 
 - [seed](https://github.com/seed-rs/seed)
@@ -14,7 +16,7 @@
 
 - [Tock](https://github.com/tock/tock)
 
-- [Rust for Linux](https://rust-for-linux.com/ )
+- [Rust for Linux](https://rust-for-linux.com/)
 
 ## Editor
 
@@ -65,30 +67,33 @@ https://www.nushell.sh/documentation.html
 
 - [alacritty](https://github.com/alacritty/alacritty)
 
-
 ## 命令行
+
 - Clap
   用于构建命令行接口，简化了命令行参数的解析和处理。
 
 ## 序列化
+
 - [serde](https://github.com/serde-rs/serde)
-  一个序列化和反序列化的框架。Serde极其高效，可以处理各种数据格式，如JSON、YAML和Bincode。
+  一个序列化和反序列化的框架。Serde 极其高效，可以处理各种数据格式，如 JSON、YAML 和 Bincode。
 
 ## 多线程
+
 - Rayon
   一个数据并行处理库，用于简化多线程编程。
 
 ## 并发
+
 - Crossbeam
   提供了一系列用于并发编程的工具，如通道、原子操作、锁等。
 
 ## 异步
+
 - [Tokio](https://github.com/tokio-rs/tokio)
   一个异步运行时，用于编写高性能的网络应用。它提供了事件驱动的非阻塞 I/O 模型。
 
 - Async-std
   提供了类似于标准库的异步版本，用于构建异步应用。
-
 
 ## Wasm
 
@@ -100,18 +105,20 @@ https://www.nushell.sh/documentation.html
 ## web 应用
 
 - [Leptos](https://github.com/leptos-rs/leptos)
-  Leptos是一个基于“响应式” ui 概念的前沿全栈 web 框架。这意味着只要底层数据发生变化，UI 就会自动更新。
+  Leptos 是一个基于“响应式” ui 概念的前沿全栈 web 框架。这意味着只要底层数据发生变化，UI 就会自动更新。
 
 - [Rocket]
   一个用于构建 web 应用的框架，以简易性和速度著称。提供了宏来简化路由和请求处理。
 
 ## ORM
+
 - [Diesel](https://github.com/diesel-rs/diesel)
-  一个ORM（对象关系映射）框架，支持多种数据库后端，如 PostgreSQL、MySQL 和 SQLite。
+  一个 ORM（对象关系映射）框架，支持多种数据库后端，如 PostgreSQL、MySQL 和 SQLite。
 
 - [SeaORM](https://github.com/SeaQL/sea-orm)
 
 ## rewriting everything in Rust
+
 [I spent six months rewriting everything in Rust](https://www.youtube.com/watch?v=vL2nB1VwX1M)
 
 - [Clap](https://github.com/clap-rs/clap)
@@ -136,6 +143,7 @@ https://www.nushell.sh/documentation.html
 - [Mux](https://www.mux.com/)
 
 ## rust & frontend
+
 [rust-fe](https://github.com/ChandlerVer5/rust-fe)
 
 ## node
@@ -149,7 +157,7 @@ https://www.nushell.sh/documentation.html
 ## 前端工具
 
 - [rust-for-fe](https://github.com/i5ting/learn-rust-for-fe)
-  Rust是未来前端基础设施
+  Rust 是未来前端基础设施
 
 - [oxc-project/oxc](https://github.com/oxc-project/oxc)
   A collection of JavaScript tools written in Rust.
@@ -225,23 +233,27 @@ UNIX style tool to pretty print json
 - [parcel-bundler/lightningcss](https://github.com/parcel-bundler/lightningcss)
   An extremely fast CSS parser, transformer, bundler, and minifier written in Rust. (github.com)
 
-
 ## 发布
+
 - [shuttle](https://github.com/shuttle-hq/shuttle)
   无需编写任何基础设施文件即可构建和发布后端。
 
 ## 与其他语言
+
 - [Rust in Flutter](https://github.com/cunarist/rinf)
 
 ## 跨平台
+
 - [Tauri](https://tauri.app/)
 - [Robius](https://github.com/project-robius)
 - [makepad](https://github.com/makepad/makepad)
 
 ## 安装
+
 - [Cargo Binstall](https://github.com/cargo-bins/cargo-binstall)
   提供了一种低复杂度的机制来安装 Rust 二进制文件，作为从源代码构建（通过 Cargo install）或手动下载包的替代方案。
 
 ## 交叉编译
+
 现在有了更加方便的方法，那就是 [cargo-zigbuid](https://github.com/rust-cross/cargo-zigbuild)。
 [Zig](https://ziglang.org) 是一种通用编程语言和工具链，用于维护健壮、最佳和可重用的软件，而交叉编译是 Zig 的一个卖点。
