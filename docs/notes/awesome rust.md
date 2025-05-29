@@ -28,11 +28,18 @@ Rust 生态系统由许多库和工具组成，可用于构建各种应用程序
 
 ## GUI
 
-- [Slint](https://slint-ui.com/)
-  Slint is a declarative(陈述) GUI toolkit to build native user interfaces for applications that are written in Rust, C++, or JavaScript.
+- [gpui](https://www.gpui.rs)
+  A fast, productive UI framework for Rust from the creators of Zed.
 
 - [Iced](https://iced.rs/)
   A cross-platform GUI library for Rust, inspired by Elm
+
+- [Floem](https://github.com/lapce/floem)
+
+- [Vizia](https://github.com/vizia/vizia)
+
+- [Slint](https://slint-ui.com/)
+  Slint is a declarative(陈述) GUI toolkit to build native user interfaces for applications that are written in Rust, C++, or JavaScript.
 
 - [Xilem](https://github.com/linebender/xilem/)
   An experimental Rust native UI framework

@@ -30,8 +30,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(@algolia/client-search@5.25.0)(@types/node@20.17.50)(postcss@8.5.3)(sass@1.89.0)(search-insights@2.17.3)
       '@ver5/vitepress-plugin-rust-playground':
-        specifier: ^1.0.1
-        version: 1.0.1(markdown-it@14.1.0)(shiki@2.5.0)(vue@3.5.15)
+        specifier: ^1.0.2
+        version: 1.0.2(markdown-it@14.1.0)(shiki@2.5.0)(vue@3.5.15)
       '@ver5/vitepress-plugin-search':
         specifier: ^1.0.7
         version: 1.0.7(flexsearch@0.8.204)(vitepress@1.6.3(@algolia/client-search@5.25.0)(@types/node@20.17.50)(less@4.3.0)(postcss@8.5.3)(sass@1.89.0)(search-insights@2.17.3))(vue@3.5.15)
@@ -645,8 +645,8 @@ packages:
   '@ver5/vitepress-plugin-link-preview@1.0.0':
     resolution: {integrity: sha512-Wzl/EUbh/NvdA/i5bftfZJUIOJnEKCQ9Rn3TufCDLZYA9fVHgkSfWJQLYbWgm4YxXx2oerqXbgqSYkWAVM6ywQ==}
 
-  '@ver5/vitepress-plugin-rust-playground@1.0.1':
-    resolution: {integrity: sha512-n3zdyLVbgWqPMILtpGvOtdz1YUOaKI/aVeaZHYinXsoqI81Nt9GAIyYuOwuRWtfy2JV05v6PmIWMilwnRi7ciw==}
+  '@ver5/vitepress-plugin-rust-playground@1.0.2':
+    resolution: {integrity: sha512-1/3nWK6JAOXpLnMJTRbrUCz4GkEjCkAqbNXU1wMtIUzqY1WiU+PE6TR0gRh7ZDaDBEehkV/5j0v1cEZiZbuzew==}
     peerDependencies:
       markdown-it: ^14.1.0
       shiki: '>=1.9.0'
@@ -1836,7 +1836,7 @@ snapshots:
       - typescript
       - universal-cookie
 
-  '@ver5/vitepress-plugin-rust-playground@1.0.1(markdown-it@14.1.0)(shiki@2.5.0)(vue@3.5.15)':
+  '@ver5/vitepress-plugin-rust-playground@1.0.2(markdown-it@14.1.0)(shiki@2.5.0)(vue@3.5.15)':
     dependencies:
       '@codemirror/commands': 6.8.1
       '@codemirror/lang-rust': 6.0.0
