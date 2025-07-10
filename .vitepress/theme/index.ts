@@ -1,7 +1,7 @@
 // https://vitepress.dev/guide/custom-theme
 import { h } from "vue";
 import Theme from "vitepress/theme";
-import "./style.css";
+import "./style.scss";
 
 import "@nolebase/vitepress-plugin-enhanced-mark/client/style.css";
 

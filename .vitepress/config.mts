@@ -27,6 +27,14 @@ export default defineConfig({
   outDir: OUT_DIR,
   base: BASE_PATH,
   vite: {
+    // 添加到 vite 配置中
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler'
+        }
+      }
+    },
     ssr: {
       noExternal: [
         '@ver5/vitepress-plugin-link-preview',

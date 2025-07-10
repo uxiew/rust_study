@@ -30,6 +30,7 @@ Rust 生态系统由许多库和工具组成，可用于构建各种应用程序
 
 - [gpui](https://www.gpui.rs)
   A fast, productive UI framework for Rust from the creators of Zed.
+  https://github.com/topics/gpui
 
 - [Iced](https://iced.rs/)
   A cross-platform GUI library for Rust, inspired by Elm

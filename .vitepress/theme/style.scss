@@ -7,7 +7,7 @@
  * Colors
  * -------------------------------------------------------------------------- */
 
- :root {
+:root {
   --vp-c-brand: #646cff;
   --vp-c-brand-light: #747bff;
   --vp-c-brand-lighter: #9499ff;
@@ -92,11 +92,25 @@
 /**
 * 自定义
 *------------------------------------------- */
-table th:empty{
-    display:none
+/* code fence */
+.vp-doc {
+  [class*='language-'] {
+    pre {
+      padding: 8px 0;
+    }
+    code {
+      padding: 0 10px;
+    }
+  }
+  .line-numbers-wrapper {
+    padding-top: 8px;
+  }
 }
 
+table th:empty {
+  display: none;
+}
 
 image {
-    text-align:'center'
+  text-align: center;
 }
