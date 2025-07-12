@@ -43,7 +43,6 @@ export default [
       { text: "Comprehensive Rust 🦀", link: "https://google.github.io/comprehensive-rust/" },
       { text: "Rust 设计模式", link: "https://github.com/Fomalhauthmj/patterns/" },
       { text: "Rust Primer", link: "https://rustcc.gitbooks.io/rustprimer" },
-      { text: "Rust 宏小册", link: "https://zjp-cn.github.io/tlborm/" },
       { text: "Rust 语言圣经", link: "https://course.rs/" },
       { text: "Rusty Book", link: "https://rusty.course.rs/" },
       { text: "Rust By Practice", link: "https://zh.practice.rs/why-exercise.html" },

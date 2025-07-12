@@ -11,3 +11,10 @@
 而函数则做不到，因为函数在运行时才会被调用，而 trait 需要在编译时就被实现。
 
 虽然宏很强大，但过度依赖宏可能导致代码难以理解和维护。
+
+
+## 参考文献
+
+1. [**The Rust Programming Language (Rust Book) - Macros**](https://doc.rust-lang.org/book/ch19-06-macros.html)
+2. [**Rust 宏小册**](https://zjp-cn.github.io/tlborm/)
+3. [**Rust Reference - Macros**](https://doc.rust-lang.org/reference/macros.html)
