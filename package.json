@@ -19,8 +19,10 @@
     "@vueuse/core": "^10.1.2",
     "markdown-it-container": "^3.0.0",
     "markdown-it-mark": "^3.0.1",
+    "mermaid": "^11.8.1",
     "sass": "^1.62.1",
     "tslib": "^2.5.2",
-    "vitepress": "^1.5.0"
+    "vitepress": "^1.5.0",
+    "vitepress-plugin-mermaid": "^2.0.17"
   }
 }
