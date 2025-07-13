@@ -13,7 +13,7 @@
     "@ver5/markdown-it-image": "^1.0.1",
     "@ver5/markdown-it-internal-link": "^1.0.0",
     "@ver5/vitepress-plugin-link-preview": "^1.0.0",
-    "@ver5/vitepress-plugin-rust-playground": "^1.0.2",
+    "@ver5/vitepress-plugin-rust-playground": "^1.0.3",
     "@ver5/vitepress-plugin-search": "^1.0.7",
     "@ver5/vitepress-plugin-sidebar": "^1.0.0",
     "@vueuse/core": "^10.1.2",

@@ -30,8 +30,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(@algolia/client-search@5.25.0)(@types/node@20.17.50)(postcss@8.5.3)(sass@1.89.0)(search-insights@2.17.3)
       '@ver5/vitepress-plugin-rust-playground':
-        specifier: ^1.0.2
-        version: 1.0.2(markdown-it@14.1.0)(shiki@2.5.0)(vue@3.5.15)
+        specifier: ^1.0.3
+        version: 1.0.3(markdown-it@14.1.0)(shiki@2.5.0)(vue@3.5.15)
       '@ver5/vitepress-plugin-search':
         specifier: ^1.0.7
         version: 1.0.7(flexsearch@0.8.204)(vitepress@1.6.3(@algolia/client-search@5.25.0)(@types/node@20.17.50)(less@4.3.0)(postcss@8.5.3)(sass@1.89.0)(search-insights@2.17.3))(vue@3.5.15)
@@ -190,14 +190,14 @@ packages:
   '@codemirror/lang-rust@6.0.0':
     resolution: {integrity: sha512-VQql3Qk1BwoXb3SUkeWll/EEwhsgQWc1bpia7CFqqp2PhQBb5A6r4Vj2JCkU/nE6A7TDPSGHTOoqJSG5s/VXtQ==}
 
-  '@codemirror/language@6.11.0':
-    resolution: {integrity: sha512-A7+f++LodNNc1wGgoRDTt78cOwWm9KVezApgjOMp1W4hM0898nsqBXwF+sbePE7ZRcjN7Sa1Z5m2oN27XkmEjQ==}
+  '@codemirror/language@6.11.2':
+    resolution: {integrity: sha512-p44TsNArL4IVXDTbapUmEkAlvWs2CFQbcfc0ymDsis1kH2wh0gcY96AS29c/vp2d0y2Tquk1EDSaawpzilUiAw==}
 
   '@codemirror/state@6.5.2':
     resolution: {integrity: sha512-FVqsPqtPWKVVL3dPSxy8wEF/ymIEuVzF1PK3VbUgrxXpJUSHQWWZz4JMToquRxnkw+36LTamCZG2iua2Ptq0fA==}
 
-  '@codemirror/view@6.36.8':
-    resolution: {integrity: sha512-yoRo4f+FdnD01fFt4XpfpMCcCAo9QvZOtbrXExn4SqzH32YC6LgzqxfLZw/r6Ge65xyY03mK/UfUqrVw1gFiFg==}
+  '@codemirror/view@6.38.0':
+    resolution: {integrity: sha512-yvSchUwHOdupXkd7xJ0ob36jdsSR/I+/C+VbY0ffBiL5NiSTEBDfB1ZGWbbIlDd5xgdUkody+lukAdOxYrOBeg==}
 
   '@docsearch/css@3.8.2':
     resolution: {integrity: sha512-y05ayQFyUmCXze79+56v/4HpycYF3uFqB78pLPrSV5ZKAlDuIAAJNhaRi8tTdRNXh05yxX/TyNnzD6LwSM89vQ==}
@@ -786,8 +786,8 @@ packages:
   '@ver5/vitepress-plugin-link-preview@1.0.0':
     resolution: {integrity: sha512-Wzl/EUbh/NvdA/i5bftfZJUIOJnEKCQ9Rn3TufCDLZYA9fVHgkSfWJQLYbWgm4YxXx2oerqXbgqSYkWAVM6ywQ==}
 
-  '@ver5/vitepress-plugin-rust-playground@1.0.2':
-    resolution: {integrity: sha512-1/3nWK6JAOXpLnMJTRbrUCz4GkEjCkAqbNXU1wMtIUzqY1WiU+PE6TR0gRh7ZDaDBEehkV/5j0v1cEZiZbuzew==}
+  '@ver5/vitepress-plugin-rust-playground@1.0.3':
+    resolution: {integrity: sha512-+TVV+Tw3kcRZzt0KUKuEUwF8HIXG43BuWTi05g0AXTKRJ4cxuLbaSJ53FSS551yGpSgj/m0IwxgBfpKO2unzlA==}
     peerDependencies:
       markdown-it: ^14.1.0
       shiki: '>=1.9.0'
@@ -980,6 +980,9 @@ packages:
 
   cose-base@2.2.0:
     resolution: {integrity: sha512-AzlgcsCbUMymkADOJtQm3wO9S3ltPfYOFD5033keQn9NJzIbtnZj+UdBJe7DYml/8TdbtHJW3j58SOnKhWY/5g==}
+
+  crelt@1.0.6:
+    resolution: {integrity: sha512-VQ2MBenTq1fWZUH9DJNGti7kKv6EeAuYr3cLwxUWhIu1baTaXh4Ib5W2CqHVqib4/MqbYGJqiL3Zb8GJZr3l4g==}
 
   csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
@@ -1913,20 +1916,20 @@ snapshots:
 
   '@codemirror/commands@6.8.1':
     dependencies:
-      '@codemirror/language': 6.11.0
+      '@codemirror/language': 6.11.2
       '@codemirror/state': 6.5.2
-      '@codemirror/view': 6.36.8
+      '@codemirror/view': 6.38.0
       '@lezer/common': 1.2.3
 
   '@codemirror/lang-rust@6.0.0':
     dependencies:
-      '@codemirror/language': 6.11.0
+      '@codemirror/language': 6.11.2
       '@lezer/rust': 1.0.2
 
-  '@codemirror/language@6.11.0':
+  '@codemirror/language@6.11.2':
     dependencies:
       '@codemirror/state': 6.5.2
-      '@codemirror/view': 6.36.8
+      '@codemirror/view': 6.38.0
       '@lezer/common': 1.2.3
       '@lezer/highlight': 1.2.1
       '@lezer/lr': 1.4.2
@@ -1936,9 +1939,10 @@ snapshots:
     dependencies:
       '@marijn/find-cluster-break': 1.0.2
 
-  '@codemirror/view@6.36.8':
+  '@codemirror/view@6.38.0':
     dependencies:
       '@codemirror/state': 6.5.2
+      crelt: 1.0.6
       style-mod: 4.1.2
       w3c-keyname: 2.2.8
 
@@ -2500,13 +2504,13 @@ snapshots:
       - typescript
       - universal-cookie
 
-  '@ver5/vitepress-plugin-rust-playground@1.0.2(markdown-it@14.1.0)(shiki@2.5.0)(vue@3.5.15)':
+  '@ver5/vitepress-plugin-rust-playground@1.0.3(markdown-it@14.1.0)(shiki@2.5.0)(vue@3.5.15)':
     dependencies:
       '@codemirror/commands': 6.8.1
       '@codemirror/lang-rust': 6.0.0
-      '@codemirror/language': 6.11.0
+      '@codemirror/language': 6.11.2
       '@codemirror/state': 6.5.2
-      '@codemirror/view': 6.36.8
+      '@codemirror/view': 6.38.0
       '@lezer/highlight': 1.2.1
       '@ver5/markdown-it-fence': 1.0.1
       filter-obj: 6.1.0
@@ -2762,6 +2766,8 @@ snapshots:
   cose-base@2.2.0:
     dependencies:
       layout-base: 2.0.1
+
+  crelt@1.0.6: {}
 
   csstype@3.1.3: {}
 

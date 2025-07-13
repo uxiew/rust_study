@@ -86,7 +86,10 @@ export default withMermaid(
       lineNumbers: true,
       config(md) {
         md
-          .use<rustPlaygroundOptions>(rustPlaygroundPlugin)
+          .use<rustPlaygroundOptions>(rustPlaygroundPlugin, {
+            channel: 'stable',
+            edition: "2024"
+          })
           .use<ImageOptions>(imagePlugin)
           .use(markIt)
           .use(alignPlugin)
