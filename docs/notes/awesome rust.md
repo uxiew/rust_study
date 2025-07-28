@@ -1,10 +1,56 @@
 Rust 生态系统由许多库和工具组成，可用于构建各种应用程序。其中一些库包括：
 
-## Rust 前端框架
+## Rust frontend frameworks
+
+- [Leptos](https://github.com/leptos-rs/leptos)
+
+- [Yew](https://github.com/yewstack/yew)
+
+- [Sycamore](https://github.com/sycamore-rs/sycamore)
+
+- [Perseus](https://github.com/framesurge/perseus)
+
+- [Sauron](https://github.com/ivanceras/sauron)
+
+- [MoonZoon](https://github.com/MoonZoon/MoonZoon)
+
+- [Percy](https://github.com/chinedufn/percy)
+
+
+## Rust Backend frameworks
+
+- [Axum](https://github.com/tokio-rs/axum)
+
+- [salvo](https://github.com/salvo-rs/salvo/)
+
+- [Axum](https://github.com/tokio-rs/axum)
+
+- [Rocket](https://rocket.rs/)
+
+- [Tide](https://github.com/http-rs/tide)
+
+- [Cot](https://github.com/CotApp/cot)
+
+- [Gotham](https://gotham.rs/)
 
 - [seed](https://github.com/seed-rs/seed)
 
-- [Actix](https://actix.rs/)
+- [Actix Web](https://actix.rs/)
+
+- [Warp](https://github.com/seanmonstar/warp)
+
+- [Loco](https://loco.rs/)
+
+- [Thruster](https://github.com/thruster-rs/Thruster)
+
+- [Dropshot](https://github.com/oxidecomputer/dropshot)
+
+- [Rouille](https://github.com/tomaka/rouille)
+
+## OpenAPI Documentation
+
+- [utoipa](https://github.com/juhaku/utoipa)
+  Simple, Fast, Code first and Compile time generated OpenAPI documentation for Rust
 
 ## Operating Systems
 
@@ -27,6 +73,10 @@ Rust 生态系统由许多库和工具组成，可用于构建各种应用程序
 - [lapce](https://lapce.dev/)
 
 ## GUI
+
+- [vizia](https://github.com/vizia/vizia)
+  Vizia is a crate for building desktop GUI applications.
+  https://book.vizia.dev/
 
 - [gpui](https://www.gpui.rs)
   A fast, productive UI framework for Rust from the creators of Zed.
@@ -51,8 +101,8 @@ Rust 生态系统由许多库和工具组成，可用于构建各种应用程序
 
 - [freya](https://github.com/marc2332/freya)
 
-- [Vizia](https://github.com/vizia/vizia/)
-  A declarative GUI library written in Rust
+- [egui](https://github.com/emilk/egui)
+  An easy-to-use GUI library for Rust
 
 ## proxy
 
