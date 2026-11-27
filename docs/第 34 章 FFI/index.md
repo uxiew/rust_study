@@ -1,18 +1,17 @@
 # 第 34 章 FFI
 
-Rust 有一个非常好的特性，就是它支持与 C 语言的 ABI 兼容。什么是 ABI 呢？维基百科是这么解释的：
+外部函数接口（FFI）让不同语言编写的程序互相调用。双方要遵守同一个应用二进制接口（ABI）。
 
----
+## 什么是 ABI？
 
-In computer software，an application binary interface（ABI）is an interface between two program modules；often，one of these modules is a library or operating system facility，and the other is a program that is being run by a user.
+维基百科将 ABI 描述为两个程序模块之间的二进制接口。一边通常是库或操作系统提供的功能，另一边是用户正在运行的程序。ABI 定义机器代码如何访问数据结构和调用程序，因此与目标硬件和平台有关。
 
-An ABI defines how data structures or computational routines are accessed in machine code，which is a low-level，hardware-dependent format.
---:
-—— Wikipedia
---:
+举例来说，要把一个结构体交给对方，双方要知道每个字段在内存中的位置；要调用函数，双方要知道如何传入参数、在哪里取回返回值。即使两边知道对方的函数名，也不能省略这些约定。
 
----
+## 为什么用 C ABI？
 
-所以，我们可以用 Rust 写一个库，然后直接把它当成 C 写的库来使用。或者反过来，用 C 写的库，可以直接在 Rust 中被调用。而且这个过程是没有额外性能损失的。C 语言的 ABI 是这个世界上最通用的 ABI，大部分编程语言都支持与 C 的 ABI 兼容。这也意味着，Rust 与其他语言之间的交互是没问题的，比如用 Rust 为 Python/Node.js/Ruby 写一个模块等。
+Rust 支持目标平台的 C ABI，因此既能导出函数供 C 调用，也能调用 C 库。本章用三个小例子展示两个方向的调用，以及怎样跨语言传递结构体和字符串。
 
-本章主要讲解 Rust 如何与其他语言进行交互，为了让示例尽可能地简洁、清晰，本章主要关注的是 Rust 如何与 C 语言进行交互。至于其他语言，搞清楚它们如何与 C 语言交互就完全可以掌握它们与 Rust 的交互办法，所以无须一个个地分别讲解。
+很多语言都有调用 C 库的手段，因此同样的接口也可作为 Rust 与 Python、Node.js 或 Ruby 交互的基础。C ABI 本身不保证没有额外开销：如果需要复制字符串、转换数据或管理对象生命周期，这些工作仍由两边的接口代码承担。
+
+本章只演示 Rust 与 C；要支持其他语言，还要遵循该语言的扩展或绑定约定。
