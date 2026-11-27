@@ -1,14 +1,12 @@
 # 第 30 章 管道
 
-在上一章中，我们主要讲述了如何在多线程中共享变量。Rust 标准库中还提供了另外一种线程之间的通信方式：mpsc。
-mpsc 为多生产者单消费者（multiple producer, single consumer）的缩写。
+如果线程需要把一份数据交给另一个线程处理，可以用消息管道（channel），不必围绕同一个共享变量加锁。
 
-这部分的库存储在 `std::sync::mpsc` 这个模块中，代表的是 Multi-producer，single-consumer FIFO queue，即多生产者单消费者先进先出队列。
-这种线程之间的通信方式是在不同线程之间建立一个通信“管道”（channel），一边发送消息，一边接收消息，完成信息交流。
+标准库的 `std::sync::mpsc` 提供多生产者、单消费者（Multi-Producer, Single-Consumer）管道：可以克隆发送端，但接收端只有一个。消息按进入管道的顺序交付；多个发送者之间谁先入队取决于调度。
 
-> Do not communicate by sharing memory；instead，share memory by communicating.
-> --:
-> —— Effective Go
-> --:
+| 构造函数 | 缓冲容量 | 缓冲区满时的行为 |
+| --- | --- | --- |
+| `channel()` | 不设上限 | `send` 不等待接收者腾出空间 |
+| `sync_channel(n)` | 固定为 `n` | `send` 等待空间；`n = 0` 时直接与接收者交接 |
 
-既然共享数据存在很多麻烦，那在某些场景下，用发消息的方式完成线程之间的通信是更合适的选择。
+这里的“异步”只描述发送端不等待空位，并不表示标准库的管道可用 `.await`；两个接收端的 `recv` 都可能阻塞当前线程。
