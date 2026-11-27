@@ -2,6 +2,12 @@
 
 如果线程需要把一份数据交给另一个线程处理，可以用消息管道（channel），不必围绕同一个共享变量加锁。
 
+《Effective Go》用一句话解释这种设计：
+
+> Do not communicate by sharing memory; instead, share memory by communicating.
+
+也就是说，不必总用共享内存来通信；有时直接发送数据，再由接收者处理，更容易理清谁能访问这份数据。
+
 标准库的 `std::sync::mpsc` 提供多生产者、单消费者（Multi-Producer, Single-Consumer）管道：可以克隆发送端，但接收端只有一个。消息按进入管道的顺序交付；多个发送者之间谁先入队取决于调度。
 
 | 构造函数 | 缓冲容量 | 缓冲区满时的行为 |
