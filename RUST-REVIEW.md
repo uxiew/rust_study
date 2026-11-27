@@ -25,7 +25,7 @@
 
 - 已修复一个阻断构建的 Markdown 链接、备忘录首页的占位链接和章节排序问题。Pages 构建产物为 `dist/`，站点基路径为 `/rust_study/`。
 - 构建仍提示依赖中的 `node:vm` 被浏览器打包外部化、部分压缩后的资源大于 500 kB；本地预览中，搜索能打开结果，Mermaid 能生成图，Playground 能运行 Hello World。
-- 访问「11.2 移动语义」时曾记录到 Vue hydration mismatch 警告；章节仍能显示，根因未确认。后续应比较原版的运行情况，再定位产生差异的组件。
+- 修复了单独成段的带图注图片被渲染为 `<p><figure>…</figure></p>` 的问题。浏览器会自动关闭 `<p>`，导致实际 DOM 和 Vue 预期不符；修复后图注渲染为独立的 `<figure>`。重新构建后，220 个 HTML 文件中无此嵌套，保留 18 个图注。
 
 ## 复现
 
@@ -33,3 +33,5 @@
 rustup toolchain install 1.100.0 --profile minimal
 python3 scripts/audit-rust-examples.py --toolchain 1.100.0 > RUST-EXAMPLES.md
 ```
+
+确实需要 Cargo 依赖的示例，在围栏上使用 `rust,cargo=tokio,no_run`；多个依赖用 `+` 分隔，例如 `rust,cargo=serde+serde_json,no_run`，并在正文给出需要的 Cargo 配置。依赖本地配套项目时也可用 `rust,cargo,no_run`，正文应注明项目位置。审计将这类示例单列为「Cargo 依赖」，不计入失败，也不自动安装依赖或验证 Cargo 项目；未标记的未解析导入仍计为失败，避免把缺失的本地模块误判为外部依赖。

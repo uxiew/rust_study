@@ -63,6 +63,12 @@
 }
 
 .vp-doc {
+  figcaption {
+    color: var(--vp-c-text-2);
+    font-size: 14px;
+    text-align: center;
+  }
+
   [class*='language-'] {
     pre {
       padding: 8px 0;

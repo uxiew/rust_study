@@ -10,7 +10,7 @@ import { books, sidebar } from "./sidebar";
 import { InlineLinkPreviewElementTransform } from "@ver5/vitepress-plugin-link-preview/markdown";
 
 import { type rustPlaygroundOptions, rustPlaygroundPlugin } from "@ver5/vitepress-plugin-rust-playground/markdown";
-import { type ImageOptions, imagePlugin } from "@ver5/markdown-it-image";
+import { imageCaptionPlugin } from "./plugins/imageCaption";
 import { type InternalLinkOptions, internalLinkPlugin } from "@ver5/markdown-it-internal-link";
 import { alignPlugin } from "@ver5/markdown-it-align";
 import { withMermaid } from "vitepress-plugin-mermaid";
@@ -90,7 +90,7 @@ export default withMermaid(
             channel: 'stable',
             edition: "2024"
           })
-          .use<ImageOptions>(imagePlugin)
+          .use(imageCaptionPlugin)
           .use(markIt)
           .use(alignPlugin)
           .use<InternalLinkOptions>(internalLinkPlugin, {

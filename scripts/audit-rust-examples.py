@@ -13,6 +13,7 @@ from urllib.parse import quote
 
 FENCE = re.compile(r"^([ \t]*)(`{3,}|~{3,})(.*)$")
 RUST = re.compile(r"^rust(?=$|[ ,:{])")
+CARGO = re.compile(r",\s*cargo(?:=([\w-]+(?:\+[\w-]+)*))?(?=\s*(?:,|$))")
 MAIN = re.compile(r"\bfn\s+main\s*\(")
 INNER_ATTR = re.compile(r"\s*#!\[(?:[^\[\]]|\[[^\[\]]*\])*\]\s*")
 ROOT = Path(__file__).resolve().parents[1]
@@ -56,6 +57,11 @@ def examples(path):
 def verify(example, compiler, edition):
     if "nightly" in example.info:
         return "Nightly 配置", "代码块指定 Nightly，未用稳定版编译"
+    if cargo := CARGO.search(example.info):
+        message = "需要配套 Cargo 项目，未独立编译"
+        if cargo[1]:
+            message += "；依赖：" + "、".join(cargo[1].split("+"))
+        return "Cargo 依赖", message
     if re.search(r"\bignore(?:-|\b)", example.info):
         return "显式忽略", "代码块标记为 ignore"
 
@@ -128,7 +134,7 @@ def main():
     print(f"# Rust 代码块编译清单\n\n工具链：`{version}`；默认 Edition {args.edition}。")
     print(f"扫描 {len(pages)} 篇 Markdown，提取 {len(snippets)} 个 Rust 代码块。")
     print("、".join(f"{status} {counts[status]} 个" for status in
-                    ("通过", "失败", "预期失败", "意外通过", "Nightly 配置", "显式忽略")) + "。\n")
+                    ("通过", "失败", "预期失败", "意外通过", "Nightly 配置", "Cargo 依赖", "显式忽略")) + "。\n")
     print("先独立编译；没有 `fn main` 的片段先当库编译，失败后再尝试放进 `main`。仅检查编译，不链接、不运行、不安装依赖。")
     print("「失败」含有教学上刻意报错但未标注的例子、缺少上下文的片段、依赖其他 crate 的示例和真正需要更新的代码，不能直接视为缺陷。")
     for (_, name), entries in sorted(grouped.items()):
