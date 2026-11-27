@@ -82,7 +82,7 @@ struct MySpecialType<T> {
 
 `Copy` 与 `Send`/`Sync` 有两个关键不同：
 
-1.  **它不是自动的**：你必须显式地使用 `#[derive(Copy)]` 来实现它（当然，前提是满足条件）。
+1.  **它不是自动的**：需要显式实现，例如使用 `#[derive(Copy)]`；也可以手写 `impl Copy`（类型仍需实现 `Clone`）。
 2.  **实现有严格条件**：
     *   一个类型的所有字段都必须实现 `Copy`。
     *   该类型不能实现 `Drop` Trait。因为如果一个类型需要自定义的清理逻辑（`Drop`），那么简单的按位复制就会导致资源管理问题（如二次释放）。
@@ -125,7 +125,7 @@ struct Point {
 
 这是标记 Trait 最核心的应用。例如，标准库的线程创建函数 `std::thread::spawn` 的签名：
 
-```rust
+```text
 pub fn spawn<F, T>(f: F) -> JoinHandle<T>
 where
     F: FnOnce() -> T + Send + 'static,
@@ -157,7 +157,11 @@ fn complex_function<T: DoesALot>(item: T) {
 
 ```rust
 // 这是合法的，因为 Send 和 Sync 是自动 Trait
-let my_error: Box<dyn std::error::Error + Send + Sync> = /* ... */;
+# fn main() {
+let my_error: Box<dyn std::error::Error + Send + Sync> =
+    Box::new(std::io::Error::other("读取失败"));
+assert_eq!(my_error.to_string(), "读取失败");
+# }
 
 // `dyn Error` 和 `dyn Error + Send + Sync` 是不同的类型，
 // 后者可以安全地在线程间共享。
@@ -173,6 +177,6 @@ let my_error: Box<dyn std::error::Error + Send + Sync> = /* ... */;
 
 -   **标记 Trait** 是一个空的 Trait，用于给类型**添加属性标签**，而非行为。
 -   **自动 Trait** (`Send`, `Sync`) 是一种特殊的标记 Trait，如果一个复合类型的所有成员都具备该属性，它就会被**自动实现**。
--   **`Copy`** 是一个有条件的标记 Trait，需要显式 `derive`，并且与 `Drop` 互斥，它改变了类型的赋值行为（从移动变为复制）。
+-   **`Copy`** 是一个有条件的标记 Trait，需要显式实现，并且与 `Drop` 互斥，它改变了类型的赋值行为（从移动变为复制）。
 -   **`Sized`** 是一个几乎无处不在的标记 Trait，用于标识编译时大小已知的类型，它是理解 `dyn Trait` 和动态分发的关键。
 -   这些 Trait 的核心价值在于它们是 Rust **泛型系统和安全保证**（尤其是线程安全）的基石。它们在编译时强制执行规则，将潜在的运行时错误转化为编译错误，这正是 Rust 强大可靠的原因之一。
