@@ -22,6 +22,7 @@ fn main() {
 
 ```rust
 let add = |a , b| {return a + b;};
+assert_eq!(add(1_i32, 2), 3);
 ```
 
 ---
@@ -32,16 +33,18 @@ let add = |a , b| {return a + b;};
 
 ```rust
 let add = |a, b| { a + b };
+assert_eq!(add(1_i32, 2), 3);
 ```
 
 ---
 
-更进一步，如果闭包的语句体只包含一条语句，那么外层的大括号也可以省略；如果有多条语句则不能省略。因此以上闭包可以省略为：
+更进一步，如果闭包的语句体只包含一个表达式，那么外层的大括号也可以省略；如果有多条语句则不能省略。因此以上闭包可以省略为：
 
 ---
 
 ```rust
 let add = |a, b| a + b;
+assert_eq!(add(1_i32, 2), 3);
 ```
 
 ---
@@ -50,7 +53,9 @@ closure 看起来和普通函数很相似，但实际上它们有许多区别。
 
 ---
 
-```rust
+预期 E0434：普通函数不能捕获外层局部变量 `x`。
+
+```rust,compile_fail,no_run
 fn main() {
     let x = 1_i32;
 
@@ -69,7 +74,7 @@ fn main() {
 
 ---
 
-```rust
+```text
 error: can't capture dynamic environment in a fn item; use the || { ... } closure form instead [E0434]
 ```
 
@@ -114,7 +119,7 @@ fn main() {
 
 ---
 
-```rust
+```text
 fn map<U, F>(self, f: F) -> Option<U>
     where F: FnOnce(T) -> U
 ```
@@ -126,7 +131,9 @@ fn map<U, F>(self, f: F) -> Option<U>
 ---
 
 ```rust
-let new: Option<i32> = option.map(|val| val * 2);
+let option = Some(2);
+let new = option.map(|val| val * 2);
+assert_eq!(new, Some(4));
 ```
 
 ---
