@@ -1,9 +1,10 @@
 // 定义页面导航
 //
 export default [
-  { text: "学习指南", link: "/", activeMatch: "" },
+  { text: "首页", link: "/", activeMatch: "^/$" },
+  { text: "章节", link: "/前言", activeMatch: "^/(?:前言|第 |附录)" },
   {
-    text: "备忘录📕",
+    text: "备忘录",
     link: "/notes/",
     activeMatch: "/notes/",
   },
@@ -11,14 +12,14 @@ export default [
     text: "Rust 官方",
     items: [
       { text: "Rust 官网", link: "https://www.rust-lang.org/" },
-      { text: "Rust 源码", link: "https://github.com/rust-lang/rust/blob/master/library/" },
+      { text: "Rust 源码", link: "https://github.com/rust-lang/rust/tree/main/library/" },
       { text: "Rust 博客", link: "https://blog.rust-lang.org/" },
       { text: "Rust 标准库", link: "https://doc.rust-lang.org/std/" },
       { text: "Rust Playground", link: "https://play.rust-lang.org/" },
       { text: "Rust 参考", link: "https://doc.rust-lang.org/reference/" },
       { text: "Rust 秘典（死灵书）", link: "https://doc.rust-lang.org/nomicon/" },
       { text: "Rust 未稳定特性手册", link: "https://doc.rust-lang.org/nightly/unstable-book/" },
-      { text: "Rust 版本指南", link: "https://doc.rust-lang.org/nightly/edition-guide/" },
+      { text: "Rust 版本指南", link: "https://doc.rust-lang.org/edition-guide/" },
       { text: "Rust RFCs", link: "https://rust-lang.github.io/rfcs/" },
       { text: "Rust API 指南", link: "https://rust-lang.github.io/api-guidelines/" },
       { text: "Rust 社区", link: "https://users.rust-lang.org/" },
@@ -32,7 +33,7 @@ export default [
       { text: "Rust 编译器开发", link: "https://rustcrustc.github.io/rustc-dev-guide-zh/" },
       { text: "Rust Forge", link: "https://forge.rust-lang.org/" },
       { text: "Rust bindgen", link: "https://rust-lang.github.io/rust-bindgen/" },
-      { text: "Rust 书籍📚", link: "https://www.rust-lang.org/learn" },
+      { text: "Rust 学习资源", link: "https://www.rust-lang.org/learn" },
     ],
   },
   {

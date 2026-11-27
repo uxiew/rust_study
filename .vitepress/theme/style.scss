@@ -1,107 +1,78 @@
-/**
- * Customize default theme styling by overriding CSS variables:
- * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
- */
-
-/**
- * Colors
- * -------------------------------------------------------------------------- */
-
 :root {
-  --vp-c-brand: #646cff;
-  --vp-c-brand-light: #747bff;
-  --vp-c-brand-lighter: #9499ff;
-  --vp-c-brand-lightest: #bcc0ff;
-  --vp-c-brand-dark: #535bf2;
-  --vp-c-brand-darker: #454ce1;
-  --vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
-}
-
-/**
- * Component: Button
- * -------------------------------------------------------------------------- */
-
-:root {
-  --vp-button-brand-border: var(--vp-c-brand-light);
-  --vp-button-brand-text: var(--vp-c-white);
-  --vp-button-brand-bg: var(--vp-c-brand);
-  --vp-button-brand-hover-border: var(--vp-c-brand-light);
-  --vp-button-brand-hover-text: var(--vp-c-white);
-  --vp-button-brand-hover-bg: var(--vp-c-brand-light);
-  --vp-button-brand-active-border: var(--vp-c-brand-light);
-  --vp-button-brand-active-text: var(--vp-c-white);
-  --vp-button-brand-active-bg: var(--vp-button-brand-bg);
-}
-
-/**
- * Component: Home
- * -------------------------------------------------------------------------- */
-
-:root {
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(
-    120deg,
-    #bd34fe 30%,
-    #41d1ff
-  );
-
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    #bd34fe 50%,
-    #47caff 50%
-  );
+  --vp-c-brand-1: #a34524;
+  --vp-c-brand-2: #8d391d;
+  --vp-c-brand-3: #83331a;
+  --vp-c-brand-soft: #ae4b2017;
+  --vp-home-hero-name-color: #a34524;
+  --vp-home-hero-image-background-image: radial-gradient(ellipse, #f3c9a4 12%, transparent 70%);
   --vp-home-hero-image-filter: blur(40px);
 }
 
-@media (min-width: 640px) {
-  :root {
-    --vp-home-hero-image-filter: blur(56px);
-  }
-}
-
-@media (min-width: 960px) {
-  :root {
-    --vp-home-hero-image-filter: blur(72px);
-  }
-}
-
-/**
- * Component: Custom Block
- * -------------------------------------------------------------------------- */
-
-:root {
-  --vp-custom-block-tip-border: var(--vp-c-brand);
-  --vp-custom-block-tip-text: var(--vp-c-brand-darker);
-  --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
-}
-
 .dark {
-  --vp-custom-block-tip-border: var(--vp-c-brand);
-  --vp-custom-block-tip-text: var(--vp-c-brand-lightest);
-  --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+  --vp-c-brand-1: #ffb185;
+  --vp-c-brand-2: #ffbc98;
+  --vp-c-brand-3: #9c4528;
+  --vp-c-brand-soft: #f9a67829;
+  --vp-home-hero-name-color: #ffb185;
+  --vp-home-hero-image-background-image: radial-gradient(ellipse, #97482f 12%, transparent 70%);
 }
 
-/**
- * Component: Algolia
- * -------------------------------------------------------------------------- */
+.VPHome {
+  .image-src {
+    width: 100%;
+    max-width: 520px;
+    max-height: none;
+  }
 
-.DocSearch {
-  --docsearch-primary-color: var(--vp-c-brand) !important;
+  .VPFeature {
+    border: 1px solid var(--vp-c-divider);
+    border-top: 2px solid var(--vp-c-brand-1);
+    border-radius: 16px;
+  }
+
+  .vp-doc.container {
+    max-width: calc(1152px + 2 * 24px);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .learning-path table {
+    display: table;
+    width: 100%;
+  }
+
+  .learning-path :is(th, td) {
+    padding: 12px 16px;
+  }
 }
 
-/**
-* 自定义
-*------------------------------------------- */
-/* code fence */
+@media (max-width: 959px) {
+  .VPHome .image-src {
+    width: min(100%, 300px);
+  }
+}
+
+@media (max-width: 639px) {
+  .VPHome .image-src {
+    width: min(100%, 220px);
+  }
+
+  .VPHome .learning-path :is(th, td) {
+    padding: 8px;
+  }
+}
+
 .vp-doc {
   [class*='language-'] {
     pre {
       padding: 8px 0;
     }
+
     code {
       padding: 0 10px;
     }
   }
+
   .line-numbers-wrapper {
     padding-top: 8px;
   }
@@ -109,8 +80,4 @@
 
 table th:empty {
   display: none;
-}
-
-image {
-  text-align: center;
 }

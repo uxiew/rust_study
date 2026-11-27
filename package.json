@@ -1,12 +1,13 @@
 {
   "private": true,
+  "packageManager": "pnpm@9.15.9",
   "scripts": {
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
   },
   "devDependencies": {
-    "@nolebase/vitepress-plugin-enhanced-mark": "^2.2.0",
+    "@nolebase/vitepress-plugin-enhanced-mark": "~2.18.2",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^20.2.3",
     "@ver5/markdown-it-align": "^1.0.0",
@@ -17,12 +18,13 @@
     "@ver5/vitepress-plugin-search": "^1.0.7",
     "@ver5/vitepress-plugin-sidebar": "^1.0.0",
     "@vueuse/core": "^10.1.2",
+    "flexsearch": "^0.7.43",
     "markdown-it-container": "^3.0.0",
-    "markdown-it-mark": "^3.0.1",
-    "mermaid": "^11.8.1",
+    "markdown-it-mark": "^4.0.0",
+    "mermaid": "^11.17.2",
     "sass": "^1.62.1",
     "tslib": "^2.5.2",
-    "vitepress": "^1.5.0",
+    "vitepress": "^1.6.4",
     "vitepress-plugin-mermaid": "^2.0.17"
   }
 }

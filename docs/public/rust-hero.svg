@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 432" fill="none">
+  <defs>
+    <linearGradient id="back" x1="20" y1="25" x2="500" y2="410" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#252433"/>
+      <stop offset="1" stop-color="#171923"/>
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" stroke="#ffe0be" stroke-opacity=".12"/>
+    </pattern>
+  </defs>
+  <rect x="20" y="20" width="520" height="392" rx="30" fill="#8b3c24" fill-opacity=".15"/>
+  <rect x="20" y="20" width="520" height="392" rx="30" fill="url(#grid)"/>
+  <rect x="50" y="56" width="476" height="330" rx="20" fill="#ac5831" fill-opacity=".26"/>
+  <rect x="38" y="44" width="476" height="330" rx="20" fill="url(#back)" stroke="#a67158" stroke-width="2"/>
+  <path d="M38 103h476" stroke="#57515b"/>
+  <circle cx="69" cy="74" r="5" fill="#fb986d"/>
+  <circle cx="88" cy="74" r="5" fill="#f6c375"/>
+  <circle cx="107" cy="74" r="5" fill="#8accb6"/>
+  <g font-family="monospace">
+    <text x="390" y="80" font-size="14" fill="#ded6dd">main.rs</text>
+    <text x="67" y="161" font-size="22" fill="#faf0e8"><tspan fill="#fcad88">fn</tspan> main() {</text>
+    <text x="91" y="201" font-size="20" fill="#faf0e8"><tspan fill="#f6c375">println!</tspan>(<tspan fill="#8accb6">"Hello, Rust!"</tspan>);</text>
+    <text x="67" y="241" font-size="22" fill="#faf0e8">}</text>
+    <path d="M66 267h420" stroke="#57515b"/>
+    <text x="67" y="306" font-size="16" fill="#fcad88">$ cargo run</text>
+    <text x="67" y="338" font-size="18" fill="#faf0e8">Hello, Rust!</text>
+  </g>
+</svg>

@@ -19,15 +19,15 @@ import { withMermaid } from "vitepress-plugin-mermaid";
 export default withMermaid(
   defineConfig({
     lang: "zh-CN",
-    title: "🦀 Dive into Rust",
-    description: "Documents my learning journey of Rust.",
+    title: "深入 Rust",
+    description: "从第一个 Rust 程序开始，循序渐进理解所有权、并发与工程实践。",
     head: [
-      ["link", { rel: "icon", href: "/logo.png" }],
-      ["meta", { property: "og:site_name", content: "Rust_Notes" }],
+      ["link", { rel: "icon", href: BASE_PATH + "/logo.svg" }],
+      ["meta", { property: "og:site_name", content: "深入 Rust" }],
     ],
     srcDir: SRC_DOC,
     outDir: OUT_DIR,
-    base: BASE_PATH,
+    base: BASE_PATH + "/",
     vite: {
       optimizeDeps: {
         include: [
@@ -102,10 +102,9 @@ export default withMermaid(
       },
     },
     themeConfig: {
-      // @ts-ignore
       outline: {
-        level: [1, 6],
-        label: "目录",
+        level: [2, 3],
+        label: "本页目录",
       },
       logo: "/logo.svg",
       search: {
@@ -115,16 +114,20 @@ export default withMermaid(
       nav,
       sidebar,
       footer: {
-        message: "Released under the MIT License",
-        copyright: "Copyright © 2023-present ChandlerVer5",
+        message: "以 MIT 许可证发布",
+        copyright: "版权所有 © 2023 至今 ChandlerVer5",
       },
       editLink: {
         pattern: REPO_URL + "/edit/main/docs/:path",
-        text: "Edit this page on GitHub",
+        text: "在 GitHub 上编辑此页",
       },
-      // socialLinks: [
-      //   { icon: 'github', link: REPO_URL }
-      // ]
+      lastUpdated: { text: "最后更新" },
+      docFooter: { prev: "上一节", next: "下一节" },
+      returnToTopLabel: "返回顶部",
+      sidebarMenuLabel: "章节目录",
+      darkModeSwitchLabel: "切换主题",
+      outlineMenuLabel: "本页目录",
+      socialLinks: [{ icon: "github", link: REPO_URL }],
     },
   })
 );

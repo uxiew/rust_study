@@ -26,7 +26,7 @@ Rust 中有一些在 `std::marker` 模块内的标记 Trait，它们被编译器
 它们是 Rust 语言核心特性的一部分。让我们来逐一认识其中最重要的几个。
 
 
-### 2.1. [自动 Trait (Auto Traits)]((https://github.com/rust-lang/rust/issues/13231)) - `Send` 和 `Sync`
+### 2.1. [自动 Trait (Auto Traits)](https://github.com/rust-lang/rust/issues/13231) - `Send` 和 `Sync`
 
 这是最常见的一类特殊标记 Trait。
 

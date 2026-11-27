@@ -18,8 +18,9 @@ export const books = getSideBar(SRC_DOC, {
   ignoreFiles: ["index"],
   collapsed: true,
   sortBy(path) {
-    const res = /(\d+).+?\/(\d+)\.(\d+)?/.exec(path);
-    return res ? Number(res[2]) + Number(res[3]) : 0;
+    const section = /^第 (\d+) 章[^/]+\/(\d+)\.(\d+)/.exec(path);
+    if (section) return Number(section[1]) * 1000 + Number(section[3]);
+    return path === "前言" ? 0 : Number.MAX_SAFE_INTEGER;
   },
   handle(item) {
     // 自定义处理显示名称
@@ -30,6 +31,6 @@ export const books = getSideBar(SRC_DOC, {
 
 export const sidebar = {
   "/notes/": notes,
-  "/code/": codes,
+  "/codes/": codes,
   "/": books,
 };

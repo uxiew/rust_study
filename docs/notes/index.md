@@ -1,9 +1,9 @@
 # 初学备忘录 📕
 
-> !这部分内基本都是 AI 汇总输出的内容，尚未经过验证。
+> 备忘录中部分内容由 AI 汇总，尚未逐条验证。请以官方文档和编译器结果为准。
 
-- [serde](URL_ADDRESS- [serde](https://serde.rs/): 序列化和反序列化库。URL_ADDRESS 序列化和反序列化库。
-- [tokio](URL_ADDRESS- [tokio](URL_ADDRESS- [tokio](URL_ADDRESS- [tokio](https://tokio.rs/): 异步运行时库。
+- [Serde](https://serde.rs/)：序列化和反序列化库。
+- [Tokio](https://tokio.rs/)：异步运行时库。
 
 ## Rustacean
 

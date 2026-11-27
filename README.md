@@ -1,16 +1,35 @@
-# Dive into Rust
-> 从纸质书本转换为在线文档，主要是方便自己随时记录学习，尊重知识版权，如有侵权，联系删除，🙏。
-本 repo 记录了自己学习的过程，大部分内容都来自《深入浅出的 Rust》这本书，但并不完全一致，会随着学习，随时更新响应的内容。
+# 深入 Rust
 
+基于《深入浅出 Rust》的中文学习站点。从第一个 Rust 程序开始，按章节学习语法、所有权、并发和工程实践，并通过可运行的示例与图解巩固理解。
 
-# 更多
-* 修复过时的部分，更新代码为目前稳定的 rust 可运行的
-* 增加了更多的 rust 相关资料
-* 记录所遇到的各种和 rust 相关的知识
+**[在线阅读](https://uxiew.github.io/rust_study/)**
 
-# TODO
-- [x] 完成勘误
-- [x] 在线代码运行
-- [x] 图片重画（使用表格代替部分图片）
-- [x] 书中链接完善（其他章节引用、官方库链接）
-- [ ] 注解、笔记功能
+## 站点预览
+
+![「深入 Rust」桌面首页，包含入门入口、特性卡片和学习路线](docs/public/screenshots/home.webp)
+
+| 章节阅读 | 移动端首页 |
+| --- | --- |
+| ![桌面章节页，左侧列出章节目录，正文显示 Rust 代码示例](docs/public/screenshots/chapter.webp) | <img src="docs/public/screenshots/mobile.webp" alt="移动端首页，导航折叠，卡片单列排列" width="240"> |
+
+## 本地运行
+
+需要 Node.js 24 和 pnpm 9.15.9（版本见 `package.json`）。
+
+```sh
+pnpm install --frozen-lockfile
+pnpm docs:dev
+```
+
+开发服务器启动后，访问 [http://localhost:5173/rust_study/](http://localhost:5173/rust_study/)。
+
+```sh
+pnpm docs:build    # 生成 dist/
+pnpm docs:preview  # 预览构建产物
+```
+
+## 文档检查
+
+见 [Rust 文档审查记录](RUST-REVIEW.md) 和 [逐段编译清单](RUST-EXAMPLES.md)。
+
+本站是学习笔记，并非原书的完整复刻。以官方文档和编译器为准；欢迎在 GitHub 提交勘误。
